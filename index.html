@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Índice Japiim de Soberania Digital</title>
+<style>
+  :root{
+    --verde: #1f6f4a;
+    --verde-claro: #e8f3ec;
+    --azul: #2c5f8a;
+    --azul-claro: #eaf2f8;
+    --texto: #2b2b2b;
+    --texto-suave: #5a5a5a;
+    --borda: #d8d8d2;
+    --fundo: #faf9f5;
+    --fundo-card: #ffffff;
+    --destaque: #c4622d;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background:var(--fundo);
+    color:var(--texto);
+    line-height:1.55;
+    font-size:17px;
+  }
+  .topo{
+    background: linear-gradient(135deg, var(--verde) 0%, #16513a 100%);
+    color:#fff;
+    padding:36px 20px 28px;
+    text-align:center;
+  }
+  .topo h1{
+    margin:0 0 8px;
+    font-size: clamp(1.4rem, 4vw, 2.1rem);
+    font-weight:700;
+    line-height:1.25;
+  }
+  .topo p{
+    margin:0;
+    opacity:0.92;
+    font-size:1rem;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .progress-wrap{
+    max-width:760px;
+    margin:18px auto 0;
+    background:rgba(255,255,255,0.25);
+    border-radius:8px;
+    height:10px;
+    overflow:hidden;
+  }
+  .progress-bar{
+    height:100%;
+    width:0%;
+    background:#ffd166;
+    transition:width .25s ease;
+  }
+  .progress-label{
+    font-size:0.85rem;
+    margin-top:6px;
+    opacity:0.9;
+  }
+  .container{
+    max-width:760px;
+    margin:0 auto;
+    padding:18px 16px 80px;
+  }
+  .modulo{
+    margin-top:34px;
+  }
+  .modulo-header{
+    background:var(--azul);
+    color:#fff;
+    padding:14px 18px;
+    border-radius:10px 10px 0 0;
+    font-size:1.15rem;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .modulo-header .icone{font-size:1.3rem;}
+  .modulo-intro{
+    background:var(--azul-claro);
+    border:1px solid var(--borda);
+    border-top:none;
+    padding:12px 18px;
+    font-size:0.95rem;
+    color:var(--texto-suave);
+    border-radius:0 0 10px 10px;
+    margin-bottom:18px;
+  }
+  .modulo-intro.no-pergunta{ border-radius:0 0 10px 10px; }
+  .pergunta{
+    background:var(--fundo-card);
+    border:1px solid var(--borda);
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:14px;
+    box-shadow:0 1px 2px rgba(0,0,0,0.03);
+  }
+  .pergunta-num{
+    color:var(--verde);
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    margin-bottom:4px;
+  }
+  .pergunta-texto{
+    font-weight:600;
+    font-size:1.02rem;
+    margin:0 0 10px;
+    color:var(--texto);
+  }
+  .pergunta-tipo{
+    font-style:italic;
+    font-size:0.82rem;
+    color:var(--texto-suave);
+    margin-bottom:12px;
+  }
+  .opcoes{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .opcao{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:10px 12px;
+    border:1px solid var(--borda);
+    border-radius:8px;
+    cursor:pointer;
+    transition: background .15s, border-color .15s;
+    background:#fff;
+  }
+  .opcao:hover{
+    background:var(--verde-claro);
+    border-color:var(--verde);
+  }
+  .opcao input{
+    margin-top:3px;
+    width:18px;
+    height:18px;
+    accent-color:var(--verde);
+    flex-shrink:0;
+  }
+  .opcao label{
+    cursor:pointer;
+    flex:1;
+  }
+  .opcao input[type="text"]{
+    width:100%;
+    margin-top:6px;
+    padding:8px 10px;
+    border:1px solid var(--borda);
+    border-radius:6px;
+    font-size:0.95rem;
+    font-family:inherit;
+  }
+  .campo-aberto{
+    width:100%;
+    margin-top:8px;
+    padding:8px 10px;
+    border:1px solid var(--borda);
+    border-radius:6px;
+    font-size:0.95rem;
+    font-family:inherit;
+    accent-color:var(--verde);
+  }
+  textarea.campo-aberto{
+    min-height:90px;
+    resize:vertical;
+  }
+  select.campo-aberto{
+    background:#fff;
+  }
+  .sub-bloco{
+    margin-top:14px;
+    padding:14px;
+    border-left:4px solid var(--verde);
+    background:var(--verde-claro);
+    border-radius:0 8px 8px 0;
+    display:none;
+  }
+  .sub-bloco.ativo{
+    display:block;
+  }
+  .sub-bloco .pergunta-texto{
+    font-size:0.97rem;
+  }
+  .nota{
+    font-size:0.82rem;
+    color:var(--destaque);
+    font-style:italic;
+    margin-top:4px;
+  }
+  /* Tabelas / matrizes */
+  .matriz-wrap{
+    overflow-x:auto;
+    margin-top:6px;
+  }
+  table.matriz{
+    border-collapse:collapse;
+    width:100%;
+    font-size:0.88rem;
+    min-width:480px;
+  }
+  table.matriz th, table.matriz td{
+    border:1px solid var(--borda);
+    padding:8px 6px;
+    text-align:center;
+  }
+  table.matriz th{
+    background:var(--azul-claro);
+    font-weight:600;
+    font-size:0.82rem;
+  }
+  table.matriz td:first-child, table.matriz th:first-child{
+    text-align:left;
+    font-weight:500;
+    min-width:140px;
+  }
+  table.matriz input{
+    width:18px;
+    height:18px;
+    accent-color:var(--verde);
+    cursor:pointer;
+  }
+  /* Likert */
+  .likert-row{
+    margin-bottom:16px;
+  }
+  .likert-row:last-child{
+    margin-bottom:0;
+  }
+  .likert-frase{
+    font-weight:600;
+    font-size:0.97rem;
+    margin-bottom:8px;
+  }
+  .likert-escala{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .likert-escala .likert-opcao{
+    flex: 1 1 18%;
+  }
+  .likert-opcao{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    padding:8px 4px;
+    border:1px solid var(--borda);
+    border-radius:8px;
+    cursor:pointer;
+    font-size:0.74rem;
+    text-align:center;
+    background:#fff;
+    transition: background .15s, border-color .15s;
+    min-height:64px;
+    justify-content:center;
+  }
+  .likert-opcao:hover{
+    background:var(--verde-claro);
+    border-color:var(--verde);
+  }
+  .likert-opcao input{
+    accent-color:var(--verde);
+    width:17px;
+    height:17px;
+  }
+  @media (max-width:480px){
+    .likert-opcao{font-size:0.68rem; padding:8px 4px; min-height:56px;}
+    .likert-escala .likert-opcao,
+    .freq-escala .likert-opcao{flex: 1 1 30%;}
+    .confianca-escala .likert-opcao{flex: 1 1 45%;}
+    body{font-size:16px;}
+    .pergunta{padding:14px;}
+  }
+  /* Frequência */
+  .freq-escala{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .freq-escala .likert-opcao{
+    flex: 1 1 18%;
+  }
+  /* Confiança matrix */
+  .confianca-item{
+    margin-bottom:14px;
+  }
+  .confianca-item:last-child{margin-bottom:0;}
+  .confianca-nome{
+    font-weight:600;
+    font-size:0.92rem;
+    margin-bottom:6px;
+  }
+  .confianca-escala{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .confianca-escala .likert-opcao{
+    flex: 1 1 21%;
+  }
+  /* Botão final */
+  .finalizar{
+    margin-top:36px;
+    text-align:center;
+  }
+  .btn-enviar{
+    background:var(--verde);
+    color:#fff;
+    border:none;
+    padding:16px 40px;
+    font-size:1.05rem;
+    font-weight:700;
+    border-radius:10px;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  .btn-enviar:hover{
+    background:#16513a;
+  }
+  .mensagem-final{
+    display:none;
+    margin-top:18px;
+    padding:16px;
+    background:var(--verde-claro);
+    border:1px solid var(--verde);
+    border-radius:10px;
+    font-weight:600;
+    color:var(--verde);
+  }
+  .mensagem-final.ativo{display:block;}
+  .ajuda-flutuante{
+    text-align:center;
+    font-size:0.85rem;
+    color:var(--texto-suave);
+    margin-top:8px;
+  }
+  hr.divisor{
+    border:none;
+    border-top:2px dashed var(--borda);
+    margin:32px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <h1>Índice Japiim de Soberania Digital</h1>
+  <p>Um Estudo Multidimensional para Compreender a Inteligência Artificial em Diferentes Contextos Sociais e Territoriais Brasileiros</p>
+  <div class="progress-wrap"><div class="progress-bar" id="barraProgresso"></div></div>
+  <div class="progress-label" id="rotuloProgresso">0% respondido</div>
+</div>
+
+<div class="container" id="formulario">
+
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 1 - Conhecendo Você e Sua Realidade (Contexto Sociodemográfico)</span></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.1</div>
+  <p class="pergunta-texto">Qual é a sua idade?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_0" value="opt0" data-q="p1_1"><label for="p1_1_0">Menos de 12 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_1" value="opt1" data-q="p1_1"><label for="p1_1_1">12 a 14 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_2" value="opt2" data-q="p1_1"><label for="p1_1_2">15 a 17 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_3" value="opt3" data-q="p1_1"><label for="p1_1_3">18 a 24 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_4" value="opt4" data-q="p1_1"><label for="p1_1_4">25 a 34 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_5" value="opt5" data-q="p1_1"><label for="p1_1_5">35 a 44 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_6" value="opt6" data-q="p1_1"><label for="p1_1_6">45 a 59 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_7" value="opt7" data-q="p1_1"><label for="p1_1_7">60 anos ou mais</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.2</div>
+  <p class="pergunta-texto">Qual sexo foi registrado na sua certidão de nascimento?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_2" id="p1_2_0" value="opt0" data-q="p1_2"><label for="p1_2_0">Masculino</label></div>
+<div class="opcao"><input type="radio" name="p1_2" id="p1_2_1" value="opt1" data-q="p1_2"><label for="p1_2_1">Feminino</label></div>
+<div class="opcao"><input type="radio" name="p1_2" id="p1_2_2" value="opt2" data-q="p1_2"><label for="p1_2_2">Intersexo</label></div>
+<div class="opcao"><input type="radio" name="p1_2" id="p1_2_3" value="opt3" data-q="p1_2"><label for="p1_2_3">Prefiro não responder</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.3</div>
+  <p class="pergunta-texto">Como você se identifica hoje em relação ao seu gênero?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_3" id="p1_3_0" value="opt0" data-q="p1_3"><label for="p1_3_0">Homem</label></div>
+<div class="opcao"><input type="radio" name="p1_3" id="p1_3_1" value="opt1" data-q="p1_3"><label for="p1_3_1">Mulher</label></div>
+<div class="opcao"><input type="radio" name="p1_3" id="p1_3_2" value="opt2" data-q="p1_3"><label for="p1_3_2">Não-binário</label></div>
+<div class="opcao"><input type="radio" name="p1_3" id="p1_3_3" value="opt3" data-q="p1_3"><label for="p1_3_3">Agênero / Gênero Fluido</label></div>
+<div class="opcao"><input type="radio" name="p1_3" id="p1_3_4" value="opt4" data-q="p1_3"><label for="p1_3_4">Prefiro descrever de outra forma<input type="text" class="campo-aberto" placeholder="Descreva (campo aberto)" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_3" id="p1_3_5" value="opt5" data-q="p1_3"><label for="p1_3_5">Prefiro não responder</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.4</div>
+  <p class="pergunta-texto">Como você se identifica em relação à sua raça ou cor?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_4" id="p1_4_0" value="opt0" data-q="p1_4"><label for="p1_4_0">Branca</label></div>
+<div class="opcao"><input type="radio" name="p1_4" id="p1_4_1" value="opt1" data-q="p1_4"><label for="p1_4_1">Preta</label></div>
+<div class="opcao"><input type="radio" name="p1_4" id="p1_4_2" value="opt2" data-q="p1_4"><label for="p1_4_2">Parda</label></div>
+<div class="opcao"><input type="radio" name="p1_4" id="p1_4_3" value="opt3" data-q="p1_4"><label for="p1_4_3">Amarela</label></div>
+<div class="opcao"><input type="radio" name="p1_4" id="p1_4_4" value="opt4" data-q="p1_4"><label for="p1_4_4">Indígena</label></div>
+<div class="opcao"><input type="radio" name="p1_4" id="p1_4_5" value="opt5" data-q="p1_4"><label for="p1_4_5">Prefiro não responder</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.5</div>
+  <p class="pergunta-texto">Com qual tipo de comunidade, povo ou lugar você mais se identifica hoje?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_0" value="opt0" data-q="p1_5"><label for="p1_5_0">Cidade ou bairro urbano (fora de favelas ou periferias)</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_1" value="opt1" data-q="p1_5"><label for="p1_5_1">Favela ou comunidade urbana de periferia</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_2" value="opt2" data-q="p1_5"><label for="p1_5_2">Comunidade indígena</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_3" value="opt3" data-q="p1_5"><label for="p1_5_3">Comunidade quilombola</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_4" value="opt4" data-q="p1_5"><label for="p1_5_4">Comunidade ribeirinha / Beiradão</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_5" value="opt5" data-q="p1_5"><label for="p1_5_5">Comunidade rural não-tradicional (sítio, fazenda ou pequeno produtor, sem ser território tradicional)</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_6" value="opt6" data-q="p1_5"><label for="p1_5_6">Comunidade caiçara, de pescadores artesanais ou extrativistas</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_7" value="opt7" data-q="p1_5"><label for="p1_5_7">Comunidade de migrantes ou refugiados</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_8" value="opt8" data-q="p1_5"><label for="p1_5_8">Comunidade do semiárido / sertão</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_9" value="opt9" data-q="p1_5"><label for="p1_5_9">Comunidade de terreiro / matriz africana</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_10" value="opt10" data-q="p1_5"><label for="p1_5_10">Povo Cigano</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_11" value="opt11" data-q="p1_5"><label for="p1_5_11">Outro lugar ou comunidade<input type="text" class="campo-aberto" placeholder="Especifique (campo aberto)" data-countable="0"></label></div>
+</div><div class="sub-bloco" data-show-if="p1_5_opt2">
+<div class="nota">Se marcou &#x27;Comunidade indígena&#x27;, informe seu povo/etnia:</div>
+<p class="pergunta-texto" style="font-size:0.92rem;">Por favor, digite seu povo/etnia:</p><textarea class="campo-aberto" name="p1_5_etnia" data-q="p1_5_etnia" placeholder="Seu povo/etnia"></textarea>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.6</div>
+  <p class="pergunta-texto">Onde você mora atualmente?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_0" value="opt0" data-q="p1_6"><label for="p1_6_0">Terra indígena / Aldeia</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_1" value="opt1" data-q="p1_6"><label for="p1_6_1">Quilombo ou território quilombola</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_2" value="opt2" data-q="p1_6"><label for="p1_6_2">Território Ribeirinho / Beiradão</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_3" value="opt3" data-q="p1_6"><label for="p1_6_3">Sítio, fazenda ou zona rural</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_4" value="opt4" data-q="p1_6"><label for="p1_6_4">Capital ou cidade vizinha muito grande (Região Metropolitana)</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_5" value="opt5" data-q="p1_6"><label for="p1_6_5">Cidade grande (Mais de 100 mil moradores)</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_6" value="opt6" data-q="p1_6"><label for="p1_6_6">Cidade média (Entre 50 mil e 100 mil moradores)</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_7" value="opt7" data-q="p1_6"><label for="p1_6_7">Cidade pequena (Entre 20 mil e 50 mil moradores)</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_8" value="opt8" data-q="p1_6"><label for="p1_6_8">Cidade muito pequena (Menos de 20 mil moradores)</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.7</div>
+  <p class="pergunta-texto">Em qual estado fica sua comunidade ou cidade?</p>
+  <div class="pergunta-tipo">Tipo: Lista Suspensa</div>
+  <select class="campo-aberto" name="p1_7" data-q="p1_7">
+<option value="" selected disabled>Selecione o estado...</option>
+<option value="Acre">Acre</option>
+<option value="Alagoas">Alagoas</option>
+<option value="Amapá">Amapá</option>
+<option value="Amazonas">Amazonas</option>
+<option value="Bahia">Bahia</option>
+<option value="Ceará">Ceará</option>
+<option value="Distrito Federal">Distrito Federal</option>
+<option value="Espírito Santo">Espírito Santo</option>
+<option value="Goiás">Goiás</option>
+<option value="Maranhão">Maranhão</option>
+<option value="Mato Grosso">Mato Grosso</option>
+<option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+<option value="Minas Gerais">Minas Gerais</option>
+<option value="Pará">Pará</option>
+<option value="Paraíba">Paraíba</option>
+<option value="Paraná">Paraná</option>
+<option value="Pernambuco">Pernambuco</option>
+<option value="Piauí">Piauí</option>
+<option value="Rio de Janeiro">Rio de Janeiro</option>
+<option value="Rio Grande do Norte">Rio Grande do Norte</option>
+<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+<option value="Rondônia">Rondônia</option>
+<option value="Roraima">Roraima</option>
+<option value="Santa Catarina">Santa Catarina</option>
+<option value="São Paulo">São Paulo</option>
+<option value="Sergipe">Sergipe</option>
+<option value="Tocantins">Tocantins</option>
+<option value="Não moro no Brasil / Não se aplica">Não moro no Brasil / Não se aplica</option>
+</select>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.8</div>
+  <p class="pergunta-texto">Há quanto tempo você vive nessa comunidade ou território?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_8" id="p1_8_0" value="opt0" data-q="p1_8"><label for="p1_8_0">Sempre vivi aqui</label></div>
+<div class="opcao"><input type="radio" name="p1_8" id="p1_8_1" value="opt1" data-q="p1_8"><label for="p1_8_1">Menos de 1 ano</label></div>
+<div class="opcao"><input type="radio" name="p1_8" id="p1_8_2" value="opt2" data-q="p1_8"><label for="p1_8_2">De 1 a 3 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_8" id="p1_8_3" value="opt3" data-q="p1_8"><label for="p1_8_3">De 4 a 9 anos</label></div>
+<div class="opcao"><input type="radio" name="p1_8" id="p1_8_4" value="opt4" data-q="p1_8"><label for="p1_8_4">10 anos ou mais</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.9</div>
+  <p class="pergunta-texto">Qual é a sua história ou ligação principal com essa comunidade?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_0" value="opt0" data-q="p1_9"><label for="p1_9_0">Nasci aqui e continuo vivendo aqui</label></div>
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_1" value="opt1" data-q="p1_9"><label for="p1_9_1">Nasci aqui, fui morar fora por um tempo e depois voltei</label></div>
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_2" value="opt2" data-q="p1_9"><label for="p1_9_2">Não nasci aqui, mas já vivo aqui há bastante tempo</label></div>
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_3" value="opt3" data-q="p1_9"><label for="p1_9_3">Não nasci aqui e cheguei há pouco tempo</label></div>
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_4" value="opt4" data-q="p1_9"><label for="p1_9_4">Não moro aqui, mas atuo na comunidade (como educador(a), pesquisador(a), parceiro(a) ou apoio)</label></div>
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_5" value="opt5" data-q="p1_9"><label for="p1_9_5">Outra situação<input type="text" class="campo-aberto" placeholder="Especifique (campo aberto)" data-countable="0"></label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.10</div>
+  <p class="pergunta-texto">Sua comunidade te considera como líder, referência ou apoio?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_10" id="p1_10_0" value="opt0" data-q="p1_10"><label for="p1_10_0">Sim, faço isso de forma oficial ou reconhecida (diretor de associação, cacique, coordenador, etc.)</label></div>
+<div class="opcao"><input type="radio" name="p1_10" id="p1_10_1" value="opt1" data-q="p1_10"><label for="p1_10_1">Sim, faço isso de forma informal (as pessoas me procuram muito para pedir ajuda ou conselhos)</label></div>
+<div class="opcao"><input type="radio" name="p1_10" id="p1_10_2" value="opt2" data-q="p1_10"><label for="p1_10_2">Não</label></div>
+<div class="opcao"><input type="radio" name="p1_10" id="p1_10_3" value="opt3" data-q="p1_10"><label for="p1_10_3">Não sei dizer</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.11</div>
+  <p class="pergunta-texto">Até que ano você estudou? (Nível de escolaridade)</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_0" value="opt0" data-q="p1_11"><label for="p1_11_0">Não frequentei a escola</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_1" value="opt1" data-q="p1_11"><label for="p1_11_1">Ensino fundamental incompleto (antigo primário/ginásio)</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_2" value="opt2" data-q="p1_11"><label for="p1_11_2">Ensino fundamental completo</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_3" value="opt3" data-q="p1_11"><label for="p1_11_3">Ensino médio incompleto (antigo 2º grau)</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_4" value="opt4" data-q="p1_11"><label for="p1_11_4">Ensino médio completo</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_5" value="opt5" data-q="p1_11"><label for="p1_11_5">Ensino técnico ou profissionalizante</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_6" value="opt6" data-q="p1_11"><label for="p1_11_6">Ensino superior incompleto (Faculdade)</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_7" value="opt7" data-q="p1_11"><label for="p1_11_7">Ensino superior completo</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_8" value="opt8" data-q="p1_11"><label for="p1_11_8">Pós-graduação (Especialização, Mestrado ou Doutorado)</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.12</div>
+  <p class="pergunta-texto">Você está estudando hoje em dia?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_0" value="opt0" data-q="p1_12"><label for="p1_12_0">Sim, em escola pública</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_1" value="opt1" data-q="p1_12"><label for="p1_12_1">Sim, em escola particular</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_2" value="opt2" data-q="p1_12"><label for="p1_12_2">Sim, em curso técnico público</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_3" value="opt3" data-q="p1_12"><label for="p1_12_3">Sim, em curso técnico particular</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_4" value="opt4" data-q="p1_12"><label for="p1_12_4">Sim, na faculdade ou universidade pública</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_5" value="opt5" data-q="p1_12"><label for="p1_12_5">Sim, na faculdade ou universidade particular</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_6" value="opt6" data-q="p1_12"><label for="p1_12_6">Sim, em cursos da própria comunidade, movimentos sociais ou outras formações</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_7" value="opt7" data-q="p1_12"><label for="p1_12_7">Não estou estudando no momento</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.13</div>
+  <p class="pergunta-texto">O que você faz no seu dia a dia atualmente? (Você pode marcar mais de uma opção)</p>
+  <div class="pergunta-tipo">Tipo: caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_0" value="opt0" data-q="p1_13"><label for="p1_13_0">Estudante</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_1" value="opt1" data-q="p1_13"><label for="p1_13_1">Professor(a) / educador(a)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_2" value="opt2" data-q="p1_13"><label for="p1_13_2">Liderança comunitária</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_3" value="opt3" data-q="p1_13"><label for="p1_13_3">Funcionário(a) público(a) (na administração, serviços da prefeitura, etc.)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_4" value="opt4" data-q="p1_13"><label for="p1_13_4">Profissional de saúde (enfermeiro/a, agente de saúde, médico/a, etc.)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_5" value="opt5" data-q="p1_13"><label for="p1_13_5">Trabalhador(a) da terra ou da natureza (agricultor/a, pescador/a, extrativista, etc.)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_6" value="opt6" data-q="p1_13"><label for="p1_13_6">Faço bicos ou trabalho por conta própria (sem carteira assinada)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_7" value="opt7" data-q="p1_13"><label for="p1_13_7">Pesquisador(a)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_8" value="opt8" data-q="p1_13"><label for="p1_13_8">Cuido da casa, dos filhos ou de parentes (responsável familiar)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13" id="p1_13_9" value="opt9" data-q="p1_13"><label for="p1_13_9">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div><div class="sub-bloco" data-show-if="p1_13_opt1">
+<div class="nota">Se marcou &#x27;Professor(a) / educador(a)&#x27; na questão 1.13, responda também:</div>
+<p class="pergunta-texto">1.13.1 Em qual nível ou etapa da educação você trabalha atualmente? (Marque todas as que se aplicam)</p><div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_0" value="opt0" data-q="p1_13_1"><label for="p1_13_1_0">Educação Infantil (Creche ou Pré-escola)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_1" value="opt1" data-q="p1_13_1"><label for="p1_13_1_1">Ensino Fundamental I (1º ao 5º ano)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_2" value="opt2" data-q="p1_13_1"><label for="p1_13_1_2">Ensino Fundamental II (6º ao 9º ano)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_3" value="opt3" data-q="p1_13_1"><label for="p1_13_1_3">Ensino Médio</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_4" value="opt4" data-q="p1_13_1"><label for="p1_13_1_4">Educação de Jovens e Adultos (EJA)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_5" value="opt5" data-q="p1_13_1"><label for="p1_13_1_5">Ensino Técnico / Profissionalizante</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_6" value="opt6" data-q="p1_13_1"><label for="p1_13_1_6">Ensino Superior (Faculdade / Pós-graduação)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_13_1" id="p1_13_1_7" value="opt7" data-q="p1_13_1"><label for="p1_13_1_7">Projetos sociais / Cursos comunitários de extensão</label></div>
+</div><p class="pergunta-texto" style="margin-top:14px;">1.13.2 Em qual tipo de instituição você dá aulas?</p><div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_13_2" id="p1_13_2_0" value="opt0" data-q="p1_13_2"><label for="p1_13_2_0">Escola ou instituição pública</label></div>
+<div class="opcao"><input type="radio" name="p1_13_2" id="p1_13_2_1" value="opt1" data-q="p1_13_2"><label for="p1_13_2_1">Escola ou instituição particular</label></div>
+<div class="opcao"><input type="radio" name="p1_13_2" id="p1_13_2_2" value="opt2" data-q="p1_13_2"><label for="p1_13_2_2">Escola comunitária, indígena, quilombola ou do campo</label></div>
+<div class="opcao"><input type="radio" name="p1_13_2" id="p1_13_2_3" value="opt3" data-q="p1_13_2"><label for="p1_13_2_3">Outra<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.14</div>
+  <p class="pergunta-texto">Você já precisou parar de estudar por causa de falta de dinheiro, distância, problemas na família ou falta de estrutura?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_14" id="p1_14_0" value="opt0" data-q="p1_14"><label for="p1_14_0">Sim</label></div>
+<div class="opcao"><input type="radio" name="p1_14" id="p1_14_1" value="opt1" data-q="p1_14"><label for="p1_14_1">Não</label></div>
+</div><div class="sub-bloco" data-show-if="p1_14_opt0">
+<div class="nota">Se respondeu &#x27;Sim&#x27;, responda também:</div>
+<p class="pergunta-texto">1.14.1 Quais foram as maiores dificuldades que fizeram você parar de estudar? (Marque todas as que se aplicam)</p><div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_0" value="opt0" data-q="p1_14_1"><label for="p1_14_1_0">Falta de dinheiro ou condições financeiras</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_1" value="opt1" data-q="p1_14_1"><label for="p1_14_1_1">A escola era muito longe ou não tinha transporte</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_2" value="opt2" data-q="p1_14_1"><label for="p1_14_1_2">Problemas com o clima ou meio ambiente (secas fortes, enchentes, isolamento por chuvas)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_3" value="opt3" data-q="p1_14_1"><label for="p1_14_1_3">Conflitos na região, violência ou falta de segurança</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_4" value="opt4" data-q="p1_14_1"><label for="p1_14_1_4">Precisei trabalhar para ajudar em casa</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_5" value="opt5" data-q="p1_14_1"><label for="p1_14_1_5">Precisei cuidar de filhos ou de outras pessoas da família</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_6" value="opt6" data-q="p1_14_1"><label for="p1_14_1_6">Não tinha a série ou o curso que eu precisava perto de casa</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_7" value="opt7" data-q="p1_14_1"><label for="p1_14_1_7">Não tinha internet, computador ou celular que funcionasse</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_8" value="opt8" data-q="p1_14_1"><label for="p1_14_1_8">Sofri discriminação ou preconceito na escola</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_9" value="opt9" data-q="p1_14_1"><label for="p1_14_1_9">Tive dificuldade com a língua ou senti que desrespeitavam a cultura do meu povo</label></div>
+<div class="opcao"><input type="checkbox" name="p1_14_1" id="p1_14_1_10" value="opt10" data-q="p1_14_1"><label for="p1_14_1_10">Outra dificuldade<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.15</div>
+  <p class="pergunta-texto">Como você costuma falar ou se comunicar no seu dia a dia? (Marque todas as que se aplicam)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p1_15" id="p1_15_0" value="opt0" data-q="p1_15"><label for="p1_15_0">Português (variedade urbana padrão)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_15" id="p1_15_1" value="opt1" data-q="p1_15"><label for="p1_15_1">Português com fala regional ou da comunidade (ex: caipira, fala ribeirinha, dialeto do semiárido)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_15" id="p1_15_2" value="opt2" data-q="p1_15"><label for="p1_15_2">Língua Indígena<input type="text" class="campo-aberto" placeholder="Qual língua indígena?" data-countable="0"></label></div>
+<div class="opcao"><input type="checkbox" name="p1_15" id="p1_15_3" value="opt3" data-q="p1_15"><label for="p1_15_3">Libras (Língua Brasileira de Sinais)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_15" id="p1_15_4" value="opt4" data-q="p1_15"><label for="p1_15_4">Outra forma<input type="text" class="campo-aberto" placeholder="Especifique (campo aberto)" data-countable="0"></label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.16</div>
+  <p class="pergunta-texto">Você já desistiu de usar um aplicativo, site, curso ou tecnologia porque as palavras eram muito difíceis, distantes ou desrespeitavam a realidade da sua cultura?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_16" id="p1_16_0" value="opt0" data-q="p1_16"><label for="p1_16_0">Sim, muitas vezes</label></div>
+<div class="opcao"><input type="radio" name="p1_16" id="p1_16_1" value="opt1" data-q="p1_16"><label for="p1_16_1">Sim, algumas vezes</label></div>
+<div class="opcao"><input type="radio" name="p1_16" id="p1_16_2" value="opt2" data-q="p1_16"><label for="p1_16_2">Raramente me acontece</label></div>
+<div class="opcao"><input type="radio" name="p1_16" id="p1_16_3" value="opt3" data-q="p1_16"><label for="p1_16_3">Nunca me aconteceu</label></div>
+<div class="opcao"><input type="radio" name="p1_16" id="p1_16_4" value="opt4" data-q="p1_16"><label for="p1_16_4">Não lembro / Não tenho certeza</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.17</div>
+  <p class="pergunta-texto">Quando você não consegue entender alguma coisa na internet ou no celular, quem costuma te ajudar? (Marque todas as que se aplicam)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_0" value="opt0" data-q="p1_17"><label for="p1_17_0">Ninguém, eu me viro e resolvo sozinho(a)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_1" value="opt1" data-q="p1_17"><label for="p1_17_1">Pessoas da minha família (pais, filhos, parentes)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_2" value="opt2" data-q="p1_17"><label for="p1_17_2">Meus amigos ou vizinhos</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_3" value="opt3" data-q="p1_17"><label for="p1_17_3">Professores ou educadores</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_4" value="opt4" data-q="p1_17"><label for="p1_17_4">Lideranças da minha comunidade</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_5" value="opt5" data-q="p1_17"><label for="p1_17_5">Os jovens ou crianças daqui da região</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_6" value="opt6" data-q="p1_17"><label for="p1_17_6">Alguém que trabalha consertando ou mexendo com isso na região</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_7" value="opt7" data-q="p1_17"><label for="p1_17_7">Procuro vídeos, explicações e tutoriais na própria internet</label></div>
+<div class="opcao"><input type="checkbox" name="p1_17" id="p1_17_8" value="opt8" data-q="p1_17"><label for="p1_17_8">Outro apoio<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.18</div>
+  <p class="pergunta-texto">Qual destas opções melhor descreve a sua situação de trabalho hoje?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_0" value="opt0" data-q="p1_18"><label for="p1_18_0">Tenho carteira assinada, sou funcionário público ou tenho vínculo formal</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_1" value="opt1" data-q="p1_18"><label for="p1_18_1">Trabalho por conta própria (sou autônomo, tenho comércio ou MEI)</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_2" value="opt2" data-q="p1_18"><label for="p1_18_2">Trabalho fazendo bicos ou sem registro em carteira</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_3" value="opt3" data-q="p1_18"><label for="p1_18_3">Trabalho na roça, na pesca ou na produção interna aqui da comunidade/território</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_4" value="opt4" data-q="p1_18"><label for="p1_18_4">Estou desempregado(a) e procurando uma oportunidade</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_5" value="opt5" data-q="p1_18"><label for="p1_18_5">Sou apenas estudante no momento</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_6" value="opt6" data-q="p1_18"><label for="p1_18_6">Sou aposentado(a) ou recebo pensão</label></div>
+<div class="opcao"><input type="radio" name="p1_18" id="p1_18_7" value="opt7" data-q="p1_18"><label for="p1_18_7">Outra situação<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.19</div>
+  <p class="pergunta-texto">Como você avalia a situação do dinheiro na sua família hoje?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_19" id="p1_19_0" value="opt0" data-q="p1_19"><label for="p1_19_0">Muito difícil (falta dinheiro para cobrir o básico da casa)</label></div>
+<div class="opcao"><input type="radio" name="p1_19" id="p1_19_1" value="opt1" data-q="p1_19"><label for="p1_19_1">Difícil (o dinheiro é muito apertado e contado)</label></div>
+<div class="opcao"><input type="radio" name="p1_19" id="p1_19_2" value="opt2" data-q="p1_19"><label for="p1_19_2">Razoável (dá para pagar as contas básicas, mas não sobra)</label></div>
+<div class="opcao"><input type="radio" name="p1_19" id="p1_19_3" value="opt3" data-q="p1_19"><label for="p1_19_3">Confortável (vivemos bem, sem passar aperto)</label></div>
+<div class="opcao"><input type="radio" name="p1_19" id="p1_19_4" value="opt4" data-q="p1_19"><label for="p1_19_4">Muito confortável (conseguimos viver muito bem e guardar dinheiro)</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.20</div>
+  <p class="pergunta-texto">Alguém que mora na sua casa recebe algum tipo de auxílio financeiro do governo (como Bolsa Família ou BPC)?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_20" id="p1_20_0" value="opt0" data-q="p1_20"><label for="p1_20_0">Sim</label></div>
+<div class="opcao"><input type="radio" name="p1_20" id="p1_20_1" value="opt1" data-q="p1_20"><label for="p1_20_1">Não</label></div>
+<div class="opcao"><input type="radio" name="p1_20" id="p1_20_2" value="opt2" data-q="p1_20"><label for="p1_20_2">Não sei</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.21</div>
+  <p class="pergunta-texto">Quantas pessoas moram na mesma casa que você?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_21" id="p1_21_0" value="opt0" data-q="p1_21"><label for="p1_21_0">Moro sozinho(a)</label></div>
+<div class="opcao"><input type="radio" name="p1_21" id="p1_21_1" value="opt1" data-q="p1_21"><label for="p1_21_1">2 pessoas</label></div>
+<div class="opcao"><input type="radio" name="p1_21" id="p1_21_2" value="opt2" data-q="p1_21"><label for="p1_21_2">3 pessoas</label></div>
+<div class="opcao"><input type="radio" name="p1_21" id="p1_21_3" value="opt3" data-q="p1_21"><label for="p1_21_3">4 pessoas</label></div>
+<div class="opcao"><input type="radio" name="p1_21" id="p1_21_4" value="opt4" data-q="p1_21"><label for="p1_21_4">5 pessoas</label></div>
+<div class="opcao"><input type="radio" name="p1_21" id="p1_21_5" value="opt5" data-q="p1_21"><label for="p1_21_5">6 pessoas ou mais</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.22</div>
+  <p class="pergunta-texto">Juntando o dinheiro de todas as pessoas que moram com você, qual é o valor aproximado que entra na casa por mês?</p>
+  <div class="pergunta-tipo">Tipo: múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_22" id="p1_22_0" value="opt0" data-q="p1_22"><label for="p1_22_0">Não temos uma renda de dinheiro fixa ou regular todo mês</label></div>
+<div class="opcao"><input type="radio" name="p1_22" id="p1_22_1" value="opt1" data-q="p1_22"><label for="p1_22_1">Até 1 Salário Mínimo</label></div>
+<div class="opcao"><input type="radio" name="p1_22" id="p1_22_2" value="opt2" data-q="p1_22"><label for="p1_22_2">Entre 1 e 3 Salários Mínimos</label></div>
+<div class="opcao"><input type="radio" name="p1_22" id="p1_22_3" value="opt3" data-q="p1_22"><label for="p1_22_3">Entre 3 e 5 Salários Mínimos</label></div>
+<div class="opcao"><input type="radio" name="p1_22" id="p1_22_4" value="opt4" data-q="p1_22"><label for="p1_22_4">Mais de 5 Salários Mínimos</label></div>
+<div class="opcao"><input type="radio" name="p1_22" id="p1_22_5" value="opt5" data-q="p1_22"><label for="p1_22_5">Prefiro não responder</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 1.23</div>
+  <p class="pergunta-texto">Você participa de algum destes grupos, associações ou espaços coletivos? (Marque todos os que se aplicam)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_0" value="opt0" data-q="p1_23"><label for="p1_23_0">Escola, faculdade ou cursos</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_1" value="opt1" data-q="p1_23"><label for="p1_23_1">Associação de moradores ou da comunidade</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_2" value="opt2" data-q="p1_23"><label for="p1_23_2">Grupo de jovens ou coletivo juvenil</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_3" value="opt3" data-q="p1_23"><label for="p1_23_3">Igreja ou grupo religioso</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_4" value="opt4" data-q="p1_23"><label for="p1_23_4">Movimento social ou sindicato</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_5" value="opt5" data-q="p1_23"><label for="p1_23_5">Conselhos locais (saúde, educação, assistência social, etc.)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_6" value="opt6" data-q="p1_23"><label for="p1_23_6">Projeto social ou Organização Não Governamental (ONG)</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_7" value="opt7" data-q="p1_23"><label for="p1_23_7">Grupo cultural, de dança, esporte ou festa tradicional do território</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_8" value="opt8" data-q="p1_23"><label for="p1_23_8">Outro espaço<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_9" value="opt9" data-q="p1_23"><label for="p1_23_9">Não participo de nenhum grupo ou coletivo</label></div>
+</div>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 2 – Aparelhos, Sinal e Internet na Sua Região (Infraestrutura e Acesso Digital)</span></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.1</div>
+  <p class="pergunta-texto">Marque como funcionam os aparelhos que você e sua família têm em casa hoje:</p>
+  <div class="pergunta-tipo">Tipo: Matriz de escolha única por linha</div>
+  <div class="matriz-wrap"><table class="matriz"><thead><tr><th></th>
+<th>Não tenho em casa</th>
+<th>Tenho, mas trava ou é muito lento</th>
+<th>Tenho e funciona bem</th>
+</tr></thead><tbody>
+<tr><td>Celular</td>
+<td><input type="radio" name="p2_1_0" id="p2_1_0_0" value="opt0" data-q="p2_1_0"></td>
+<td><input type="radio" name="p2_1_0" id="p2_1_0_1" value="opt1" data-q="p2_1_0"></td>
+<td><input type="radio" name="p2_1_0" id="p2_1_0_2" value="opt2" data-q="p2_1_0"></td>
+</tr>
+<tr><td>Computador ou Notebook</td>
+<td><input type="radio" name="p2_1_1" id="p2_1_1_0" value="opt0" data-q="p2_1_1"></td>
+<td><input type="radio" name="p2_1_1" id="p2_1_1_1" value="opt1" data-q="p2_1_1"></td>
+<td><input type="radio" name="p2_1_1" id="p2_1_1_2" value="opt2" data-q="p2_1_1"></td>
+</tr>
+<tr><td>Tablet</td>
+<td><input type="radio" name="p2_1_2" id="p2_1_2_0" value="opt0" data-q="p2_1_2"></td>
+<td><input type="radio" name="p2_1_2" id="p2_1_2_1" value="opt1" data-q="p2_1_2"></td>
+<td><input type="radio" name="p2_1_2" id="p2_1_2_2" value="opt2" data-q="p2_1_2"></td>
+</tr>
+<tr><td>Internet (Sinal ou Wi-fi)</td>
+<td><input type="radio" name="p2_1_3" id="p2_1_3_0" value="opt0" data-q="p2_1_3"></td>
+<td><input type="radio" name="p2_1_3" id="p2_1_3_1" value="opt1" data-q="p2_1_3"></td>
+<td><input type="radio" name="p2_1_3" id="p2_1_3_2" value="opt2" data-q="p2_1_3"></td>
+</tr>
+</tbody></table></div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.2</div>
+  <p class="pergunta-texto">Em quais destes lugares você consegue usar a internet ou um computador?</p>
+  <div class="pergunta-tipo">Tipo: Matriz de escolha única por linha</div>
+  <div class="matriz-wrap"><table class="matriz"><thead><tr><th></th>
+<th>Não uso neste lugar</th>
+<th>Uso, mas a internet é ruim/trava</th>
+<th>Uso e funciona bem</th>
+</tr></thead><tbody>
+<tr><td>Na minha casa</td>
+<td><input type="radio" name="p2_2_0" id="p2_2_0_0" value="opt0" data-q="p2_2_0"></td>
+<td><input type="radio" name="p2_2_0" id="p2_2_0_1" value="opt1" data-q="p2_2_0"></td>
+<td><input type="radio" name="p2_2_0" id="p2_2_0_2" value="opt2" data-q="p2_2_0"></td>
+</tr>
+<tr><td>Na escola ou faculdade</td>
+<td><input type="radio" name="p2_2_1" id="p2_2_1_0" value="opt0" data-q="p2_2_1"></td>
+<td><input type="radio" name="p2_2_1" id="p2_2_1_1" value="opt1" data-q="p2_2_1"></td>
+<td><input type="radio" name="p2_2_1" id="p2_2_1_2" value="opt2" data-q="p2_2_1"></td>
+</tr>
+<tr><td>No CRAS / Centro Comunitário</td>
+<td><input type="radio" name="p2_2_2" id="p2_2_2_0" value="opt0" data-q="p2_2_2"></td>
+<td><input type="radio" name="p2_2_2" id="p2_2_2_1" value="opt1" data-q="p2_2_2"></td>
+<td><input type="radio" name="p2_2_2" id="p2_2_2_2" value="opt2" data-q="p2_2_2"></td>
+</tr>
+<tr><td>No meu trabalho</td>
+<td><input type="radio" name="p2_2_3" id="p2_2_3_0" value="opt0" data-q="p2_2_3"></td>
+<td><input type="radio" name="p2_2_3" id="p2_2_3_1" value="opt1" data-q="p2_2_3"></td>
+<td><input type="radio" name="p2_2_3" id="p2_2_3_2" value="opt2" data-q="p2_2_3"></td>
+</tr>
+<tr><td>Na rede comunitária</td>
+<td><input type="radio" name="p2_2_4" id="p2_2_4_0" value="opt0" data-q="p2_2_4"></td>
+<td><input type="radio" name="p2_2_4" id="p2_2_4_1" value="opt1" data-q="p2_2_4"></td>
+<td><input type="radio" name="p2_2_4" id="p2_2_4_2" value="opt2" data-q="p2_2_4"></td>
+</tr>
+<tr><td>Na casa de vizinhos ou parentes</td>
+<td><input type="radio" name="p2_2_5" id="p2_2_5_0" value="opt0" data-q="p2_2_5"></td>
+<td><input type="radio" name="p2_2_5" id="p2_2_5_1" value="opt1" data-q="p2_2_5"></td>
+<td><input type="radio" name="p2_2_5" id="p2_2_5_2" value="opt2" data-q="p2_2_5"></td>
+</tr>
+<tr><td>Outro lugar</td>
+<td><input type="radio" name="p2_2_6" id="p2_2_6_0" value="opt0" data-q="p2_2_6"></td>
+<td><input type="radio" name="p2_2_6" id="p2_2_6_1" value="opt1" data-q="p2_2_6"></td>
+<td><input type="radio" name="p2_2_6" id="p2_2_6_2" value="opt2" data-q="p2_2_6"></td>
+</tr>
+</tbody></table></div><input type="text" class="campo-aberto" placeholder="Se marcou 'Outro lugar', especifique aqui" data-countable="0">
+</div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 2.3</div>
+  <p class="pergunta-texto">Pense na internet que você mais usa no dia a dia. O quanto você concorda com as frases abaixo?</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+<div class="likert-frase">A internet é boa o suficiente para eu assistir a vídeos ou aulas online sem ficar travando ou parando toda hora.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_3_1_0"><input type="radio" name="p2_3_1" id="p2_3_1_0" value="opt0" data-q="p2_3_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_3_1_1"><input type="radio" name="p2_3_1" id="p2_3_1_1" value="opt1" data-q="p2_3_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_3_1_2"><input type="radio" name="p2_3_1" id="p2_3_1_2" value="opt2" data-q="p2_3_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_3_1_3"><input type="radio" name="p2_3_1" id="p2_3_1_3" value="opt3" data-q="p2_3_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_3_1_4"><input type="radio" name="p2_3_1" id="p2_3_1_4" value="opt4" data-q="p2_3_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Consigo baixar ou enviar arquivos pesados (como fotos, vídeos e apostilas em PDF) sem esperar demais.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_3_2_0"><input type="radio" name="p2_3_2" id="p2_3_2_0" value="opt0" data-q="p2_3_2"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_3_2_1"><input type="radio" name="p2_3_2" id="p2_3_2_1" value="opt1" data-q="p2_3_2"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_3_2_2"><input type="radio" name="p2_3_2" id="p2_3_2_2" value="opt2" data-q="p2_3_2"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_3_2_3"><input type="radio" name="p2_3_2" id="p2_3_2_3" value="opt3" data-q="p2_3_2"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_3_2_4"><input type="radio" name="p2_3_2" id="p2_3_2_4" value="opt4" data-q="p2_3_2"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">A internet funciona bem na hora em que eu mais preciso (para estudar ou trabalhar).</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_3_3_0"><input type="radio" name="p2_3_3" id="p2_3_3_0" value="opt0" data-q="p2_3_3"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_3_3_1"><input type="radio" name="p2_3_3" id="p2_3_3_1" value="opt1" data-q="p2_3_3"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_3_3_2"><input type="radio" name="p2_3_3" id="p2_3_3_2" value="opt2" data-q="p2_3_3"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_3_3_3"><input type="radio" name="p2_3_3" id="p2_3_3_3" value="opt3" data-q="p2_3_3"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_3_3_4"><input type="radio" name="p2_3_3" id="p2_3_3_4" value="opt4" data-q="p2_3_3"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Consigo usar sites de estudo, aplicativos ou páginas do governo sem que o sistema trave.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_3_4_0"><input type="radio" name="p2_3_4" id="p2_3_4_0" value="opt0" data-q="p2_3_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_3_4_1"><input type="radio" name="p2_3_4" id="p2_3_4_1" value="opt1" data-q="p2_3_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_3_4_2"><input type="radio" name="p2_3_4" id="p2_3_4_2" value="opt2" data-q="p2_3_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_3_4_3"><input type="radio" name="p2_3_4" id="p2_3_4_3" value="opt3" data-q="p2_3_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_3_4_4"><input type="radio" name="p2_3_4" id="p2_3_4_4" value="opt4" data-q="p2_3_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">No geral, o sinal da internet é firme e não fica caindo toda hora no meu dia a dia.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_3_5_0"><input type="radio" name="p2_3_5" id="p2_3_5_0" value="opt0" data-q="p2_3_5"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_3_5_1"><input type="radio" name="p2_3_5" id="p2_3_5_1" value="opt1" data-q="p2_3_5"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_3_5_2"><input type="radio" name="p2_3_5" id="p2_3_5_2" value="opt2" data-q="p2_3_5"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_3_5_3"><input type="radio" name="p2_3_5" id="p2_3_5_3" value="opt3" data-q="p2_3_5"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_3_5_4"><input type="radio" name="p2_3_5" id="p2_3_5_4" value="opt4" data-q="p2_3_5"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.4</div>
+  <p class="pergunta-texto">Como você costuma colocar internet no seu celular?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_4" id="p2_4_0" value="opt0" data-q="p2_4"><label for="p2_4_0">Plano Pré-pago (coloco créditos só quando posso).</label></div>
+<div class="opcao"><input type="radio" name="p2_4" id="p2_4_1" value="opt1" data-q="p2_4"><label for="p2_4_1">Plano Controle ou de conta mensal (pago todo mês um valor fixo).</label></div>
+<div class="opcao"><input type="radio" name="p2_4" id="p2_4_2" value="opt2" data-q="p2_4"><label for="p2_4_2">Só uso o WhatsApp e as redes sociais de graça pelo plano, mas não consigo abrir outros sites ou vídeos quando os créditos acabam.</label></div>
+<div class="opcao"><input type="radio" name="p2_4" id="p2_4_3" value="opt3" data-q="p2_4"><label for="p2_4_3">Só uso o Wi-fi emprestado de vizinhos, parentes ou conhecidos.</label></div>
+<div class="opcao"><input type="radio" name="p2_4" id="p2_4_4" value="opt4" data-q="p2_4"><label for="p2_4_4">Uso a internet de graça da prefeitura, da escola, da associação ou outro lugar público.</label></div>
+<div class="opcao"><input type="radio" name="p2_4" id="p2_4_5" value="opt5" data-q="p2_4"><label for="p2_4_5">Não tenho internet no celular.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.5</div>
+  <p class="pergunta-texto">Pense no aparelho que você mais usa para estudar ou fazer suas atividades (celular, tablet ou computador). Como é a sua situação de uso?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_5" id="p2_5_0" value="opt0" data-q="p2_5"><label for="p2_5_0">O aparelho é só meu e uso a hora que eu quiser.</label></div>
+<div class="opcao"><input type="radio" name="p2_5" id="p2_5_1" value="opt1" data-q="p2_5"><label for="p2_5_1">Divido o aparelho com minha família, mas consigo usar quando preciso para estudar.</label></div>
+<div class="opcao"><input type="radio" name="p2_5" id="p2_5_2" value="opt2" data-q="p2_5"><label for="p2_5_2">Divido o aparelho com muita gente e quase nunca sobra tempo para mim.</label></div>
+<div class="opcao"><input type="radio" name="p2_5" id="p2_5_3" value="opt3" data-q="p2_5"><label for="p2_5_3">Não tenho aparelho, preciso pedir emprestado para outras pessoas toda vez.</label></div>
+<div class="opcao"><input type="radio" name="p2_5" id="p2_5_4" value="opt4" data-q="p2_5"><label for="p2_5_4">Não tenho e não utilizo esse tipo de aparelho para estudar ou realizar atividades.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.5.1</div>
+  <p class="pergunta-texto">Em média, quantas horas por dia você passa usando celular, computador ou tablet para qualquer atividade (como estudar, trabalhar, ver vídeos ou redes sociais)?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_5_1" id="p2_5_1_0" value="opt0" data-q="p2_5_1"><label for="p2_5_1_0">Não utilizo.</label></div>
+<div class="opcao"><input type="radio" name="p2_5_1" id="p2_5_1_1" value="opt1" data-q="p2_5_1"><label for="p2_5_1_1">Menos de 1 hora por dia.</label></div>
+<div class="opcao"><input type="radio" name="p2_5_1" id="p2_5_1_2" value="opt2" data-q="p2_5_1"><label for="p2_5_1_2">De 1 a 2 horas por dia.</label></div>
+<div class="opcao"><input type="radio" name="p2_5_1" id="p2_5_1_3" value="opt3" data-q="p2_5_1"><label for="p2_5_1_3">De 3 a 4 horas por dia.</label></div>
+<div class="opcao"><input type="radio" name="p2_5_1" id="p2_5_1_4" value="opt4" data-q="p2_5_1"><label for="p2_5_1_4">De 5 a 6 horas por dia.</label></div>
+<div class="opcao"><input type="radio" name="p2_5_1" id="p2_5_1_5" value="opt5" data-q="p2_5_1"><label for="p2_5_1_5">Mais de 6 horas por dia.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.6</div>
+  <p class="pergunta-texto">Como é a situação da energia elétrica na sua casa? Ela atrapalha você a usar o celular ou a internet?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_6" id="p2_6_0" value="opt0" data-q="p2_6"><label for="p2_6_0">A energia é boa e firme (quase nunca falta ou atrapalha meu uso).</label></div>
+<div class="opcao"><input type="radio" name="p2_6" id="p2_6_1" value="opt1" data-q="p2_6"><label for="p2_6_1">A energia cai direto (toda semana ou sempre que chove) e me deixa sem bateria ou internet.</label></div>
+<div class="opcao"><input type="radio" name="p2_6" id="p2_6_2" value="opt2" data-q="p2_6"><label for="p2_6_2">Uso energia de motor (gerador a diesel) ou placa solar, então só tenho luz em algumas horas do dia.</label></div>
+<div class="opcao"><input type="radio" name="p2_6" id="p2_6_3" value="opt3" data-q="p2_6"><label for="p2_6_3">Minha casa não tem energia elétrica.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.7</div>
+  <p class="pergunta-texto">Tem algum lugar perto de onde você mora que ofereça computador com internet de graça e alguém para ajudar a mexer? (Marque todas as opções que existem e funcionam de verdade aí)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_0" value="opt0" data-q="p2_7"><label for="p2_7_0">Telecentro ou Infocentro da comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_1" value="opt1" data-q="p2_7"><label for="p2_7_1">Biblioteca Pública com computadores funcionando.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_2" value="opt2" data-q="p2_7"><label for="p2_7_2">A escola da região deixa os moradores usarem os computadores.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_3" value="opt3" data-q="p2_7"><label for="p2_7_3">Associação de moradores, sede da Aldeia ou do Quilombo.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_4" value="opt4" data-q="p2_7"><label for="p2_7_4">Tem Lan House na região, mas precisa pagar para usar.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_5" value="opt5" data-q="p2_7"><label for="p2_7_5">Não tem nenhum lugar assim por perto.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.8</div>
+  <p class="pergunta-texto">Quando você tenta usar um aplicativo ou site novo, qual é a sua maior dificuldade?</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p2_8" id="p2_8_0" value="opt0" data-q="p2_8" data-exclusive="1" data-exclusive-group="p2_8"><label for="p2_8_0">Não tenho dificuldades, aprendo fácil.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_8" id="p2_8_1" value="opt1" data-q="p2_8" data-exclusive-group="p2_8"><label for="p2_8_1">A linguagem (tem muita palavra em inglês ou um português muito difícil que não uso).</label></div>
+<div class="opcao"><input type="checkbox" name="p2_8" id="p2_8_2" value="opt2" data-q="p2_8" data-exclusive-group="p2_8"><label for="p2_8_2">O tamanho das letras ou as cores da tela (ruins de enxergar ou forçam a vista).</label></div>
+<div class="opcao"><input type="checkbox" name="p2_8" id="p2_8_3" value="opt3" data-q="p2_8" data-exclusive-group="p2_8"><label for="p2_8_3">Pedem e-mail e senhas complicadas de criar ou de lembrar.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_8" id="p2_8_4" value="opt4" data-q="p2_8" data-exclusive-group="p2_8"><label for="p2_8_4">Não acho nada que fale sobre a minha realidade ou cultura.</label></div>
+</div><div class="nota">Se marcar "Não tenho dificuldades, aprendo fácil", as demais opções são desmarcadas automaticamente.</div>
+</div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 2.9</div>
+  <p class="pergunta-texto">Pensando no seu dia a dia, o quanto você concorda com as frases abaixo:</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+<div class="likert-frase">O celular ou computador que eu tenho hoje é suficiente para eu aprender coisas novas na internet.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_9_1_0"><input type="radio" name="p2_9_1" id="p2_9_1_0" value="opt0" data-q="p2_9_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_9_1_1"><input type="radio" name="p2_9_1" id="p2_9_1_1" value="opt1" data-q="p2_9_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_9_1_2"><input type="radio" name="p2_9_1" id="p2_9_1_2" value="opt2" data-q="p2_9_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_9_1_3"><input type="radio" name="p2_9_1" id="p2_9_1_3" value="opt3" data-q="p2_9_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_9_1_4"><input type="radio" name="p2_9_1" id="p2_9_1_4" value="opt4" data-q="p2_9_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Sinto que o meu bairro ou comunidade foi &quot;esquecido&quot; pelas empresas de internet e tecnologia.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_9_2_0"><input type="radio" name="p2_9_2" id="p2_9_2_0" value="opt0" data-q="p2_9_2"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_9_2_1"><input type="radio" name="p2_9_2" id="p2_9_2_1" value="opt1" data-q="p2_9_2"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_9_2_2"><input type="radio" name="p2_9_2" id="p2_9_2_2" value="opt2" data-q="p2_9_2"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_9_2_3"><input type="radio" name="p2_9_2" id="p2_9_2_3" value="opt3" data-q="p2_9_2"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_9_2_4"><input type="radio" name="p2_9_2" id="p2_9_2_4" value="opt4" data-q="p2_9_2"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu queria usar aplicativos ou ferramentas mais modernas, mas a minha internet não aguenta.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_9_3_0"><input type="radio" name="p2_9_3" id="p2_9_3_0" value="opt0" data-q="p2_9_3"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_9_3_1"><input type="radio" name="p2_9_3" id="p2_9_3_1" value="opt1" data-q="p2_9_3"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_9_3_2"><input type="radio" name="p2_9_3" id="p2_9_3_2" value="opt2" data-q="p2_9_3"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_9_3_3"><input type="radio" name="p2_9_3" id="p2_9_3_3" value="opt3" data-q="p2_9_3"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_9_3_4"><input type="radio" name="p2_9_3" id="p2_9_3_4" value="opt4" data-q="p2_9_3"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Se desse uma emergência agora, eu conseguiria pedir ajuda pela internet rápido e sem problemas.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p2_9_4_0"><input type="radio" name="p2_9_4" id="p2_9_4_0" value="opt0" data-q="p2_9_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p2_9_4_1"><input type="radio" name="p2_9_4" id="p2_9_4_1" value="opt1" data-q="p2_9_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p2_9_4_2"><input type="radio" name="p2_9_4" id="p2_9_4_2" value="opt2" data-q="p2_9_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p2_9_4_3"><input type="radio" name="p2_9_4" id="p2_9_4_3" value="opt3" data-q="p2_9_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p2_9_4_4"><input type="radio" name="p2_9_4" id="p2_9_4_4" value="opt4" data-q="p2_9_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.10</div>
+  <p class="pergunta-texto">Seus pais ou avós sabem mexer em celular ou internet?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_10" id="p2_10_0" value="opt0" data-q="p2_10"><label for="p2_10_0">Sim, meus pais e meus avós sabem mexer.</label></div>
+<div class="opcao"><input type="radio" name="p2_10" id="p2_10_1" value="opt1" data-q="p2_10"><label for="p2_10_1">Só meus pais sabem mexer.</label></div>
+<div class="opcao"><input type="radio" name="p2_10" id="p2_10_2" value="opt2" data-q="p2_10"><label for="p2_10_2">Só meus avós sabem mexer.</label></div>
+<div class="opcao"><input type="radio" name="p2_10" id="p2_10_3" value="opt3" data-q="p2_10"><label for="p2_10_3">Não, nenhum deles sabe mexer.</label></div>
+<div class="opcao"><input type="radio" name="p2_10" id="p2_10_4" value="opt4" data-q="p2_10"><label for="p2_10_4">Não conheci meus pais/avós ou isso não se aplica à minha história.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.11</div>
+  <p class="pergunta-texto">Você precisou viajar ou sair da sua região/comunidade para conseguir usar a internet ou um computador pela primeira vez na vida?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_11" id="p2_11_0" value="opt0" data-q="p2_11"><label for="p2_11_0">Sim, precisei ir para outra cidade ou lugar distante para isso.</label></div>
+<div class="opcao"><input type="radio" name="p2_11" id="p2_11_1" value="opt1" data-q="p2_11"><label for="p2_11_1">Não, a primeira vez foi aqui mesmo na minha comunidade/cidade.</label></div>
+<div class="opcao"><input type="radio" name="p2_11" id="p2_11_2" value="opt2" data-q="p2_11"><label for="p2_11_2">Não me lembro.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.12</div>
+  <p class="pergunta-texto">Se o seu celular ou computador principal quebrar hoje, tem quem conserte aí na sua comunidade?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p2_12" id="p2_12_0" value="opt0" data-q="p2_12"><label for="p2_12_0">Sim, tem técnicos ou pessoas que arrumam aqui dentro.</label></div>
+<div class="opcao"><input type="radio" name="p2_12" id="p2_12_1" value="opt1" data-q="p2_12"><label for="p2_12_1">Mais ou menos (consigo comprar peças simples, mas para consertos difíceis tem que mandar para outra cidade).</label></div>
+<div class="opcao"><input type="radio" name="p2_12" id="p2_12_2" value="opt2" data-q="p2_12"><label for="p2_12_2">Não, tenho que viajar ou mandar para longe para conseguir consertar.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.13</div>
+  <p class="pergunta-texto">Você costuma baixar vídeos, apostilas ou conteúdos quando acha uma internet boa, para poder olhar depois quando estiver sem sinal?</p>
+  <div class="pergunta-tipo">Tipo: Escala de frequência</div>
+  <div class="freq-escala">
+<label class="likert-opcao" for="p2_13_0"><input type="radio" name="p2_13" id="p2_13_0" value="opt0" data-q="p2_13"><span>1
+Nunca</span></label>
+<label class="likert-opcao" for="p2_13_1"><input type="radio" name="p2_13" id="p2_13_1" value="opt1" data-q="p2_13"><span>2
+Raramente</span></label>
+<label class="likert-opcao" for="p2_13_2"><input type="radio" name="p2_13" id="p2_13_2" value="opt2" data-q="p2_13"><span>3
+Às vezes</span></label>
+<label class="likert-opcao" for="p2_13_3"><input type="radio" name="p2_13" id="p2_13_3" value="opt3" data-q="p2_13"><span>4
+Frequentemente</span></label>
+<label class="likert-opcao" for="p2_13_4"><input type="radio" name="p2_13" id="p2_13_4" value="opt4" data-q="p2_13"><span>5
+Sempre</span></label>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 2.14</div>
+  <p class="pergunta-texto">Você já deixou de usar um site ou aplicativo (como ChatGPT ou criadores de imagem) com medo de que os créditos de internet do celular acabassem rápido demais?</p>
+  <div class="pergunta-tipo">Tipo: Escala de frequência</div>
+  <div class="freq-escala">
+<label class="likert-opcao" for="p2_14_0"><input type="radio" name="p2_14" id="p2_14_0" value="opt0" data-q="p2_14"><span>1
+Nunca</span></label>
+<label class="likert-opcao" for="p2_14_1"><input type="radio" name="p2_14" id="p2_14_1" value="opt1" data-q="p2_14"><span>2
+Raramente</span></label>
+<label class="likert-opcao" for="p2_14_2"><input type="radio" name="p2_14" id="p2_14_2" value="opt2" data-q="p2_14"><span>3
+Às vezes</span></label>
+<label class="likert-opcao" for="p2_14_3"><input type="radio" name="p2_14" id="p2_14_3" value="opt3" data-q="p2_14"><span>4
+Frequentemente</span></label>
+<label class="likert-opcao" for="p2_14_4"><input type="radio" name="p2_14" id="p2_14_4" value="opt4" data-q="p2_14"><span>5
+Sempre</span></label>
+</div>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 3 – Conhecimento e Uso de Inteligência Artificial (Alfabetização e Capacidade em IA)</span></div>
+<div class="modulo-intro">O quanto você concorda com as frases abaixo sobre tecnologia e Inteligência Artificial (IA)? — Tipo: Escala Likert</div>
+<div class="pergunta"><div class="likert-row">
+<div class="likert-frase">Eu sei o que significa o termo &quot;Inteligência Artificial&quot; (IA).</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p3_1_0"><input type="radio" name="p3_1" id="p3_1_0" value="opt0" data-q="p3_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p3_1_1"><input type="radio" name="p3_1" id="p3_1_1" value="opt1" data-q="p3_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p3_1_2"><input type="radio" name="p3_1" id="p3_1_2" value="opt2" data-q="p3_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p3_1_3"><input type="radio" name="p3_1" id="p3_1_3" value="opt3" data-q="p3_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p3_1_4"><input type="radio" name="p3_1" id="p3_1_4" value="opt4" data-q="p3_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu consigo perceber quando um aplicativo, site ou tecnologia usa Inteligência Artificial.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p3_2_0"><input type="radio" name="p3_2" id="p3_2_0" value="opt0" data-q="p3_2"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p3_2_1"><input type="radio" name="p3_2" id="p3_2_1" value="opt1" data-q="p3_2"><span>Discordo</span></label>
+<label class="likert-opcao" for="p3_2_2"><input type="radio" name="p3_2" id="p3_2_2" value="opt2" data-q="p3_2"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p3_2_3"><input type="radio" name="p3_2" id="p3_2_3" value="opt3" data-q="p3_2"><span>Concordo</span></label>
+<label class="likert-opcao" for="p3_2_4"><input type="radio" name="p3_2" id="p3_2_4" value="opt4" data-q="p3_2"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu já usei algum aplicativo ou ferramenta de Inteligência Artificial para estudar, trabalhar, criar coisas ou resolver problemas do dia a dia.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p3_3_0"><input type="radio" name="p3_3" id="p3_3_0" value="opt0" data-q="p3_3"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p3_3_1"><input type="radio" name="p3_3" id="p3_3_1" value="opt1" data-q="p3_3"><span>Discordo</span></label>
+<label class="likert-opcao" for="p3_3_2"><input type="radio" name="p3_3" id="p3_3_2" value="opt2" data-q="p3_3"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p3_3_3"><input type="radio" name="p3_3" id="p3_3_3" value="opt3" data-q="p3_3"><span>Concordo</span></label>
+<label class="likert-opcao" for="p3_3_4"><input type="radio" name="p3_3" id="p3_3_4" value="opt4" data-q="p3_3"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu sei como escrever uma pergunta ou comando para a Inteligência Artificial me dar a resposta certa do jeito que eu quero.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p3_4_0"><input type="radio" name="p3_4" id="p3_4_0" value="opt0" data-q="p3_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p3_4_1"><input type="radio" name="p3_4" id="p3_4_1" value="opt1" data-q="p3_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p3_4_2"><input type="radio" name="p3_4" id="p3_4_2" value="opt2" data-q="p3_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p3_4_3"><input type="radio" name="p3_4" id="p3_4_3" value="opt3" data-q="p3_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p3_4_4"><input type="radio" name="p3_4" id="p3_4_4" value="opt4" data-q="p3_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu me sinto capaz de aprender a mexer em um aplicativo ou ferramenta nova de IA por conta própria (sozinho/a).</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p3_5_0"><input type="radio" name="p3_5" id="p3_5_0" value="opt0" data-q="p3_5"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p3_5_1"><input type="radio" name="p3_5" id="p3_5_1" value="opt1" data-q="p3_5"><span>Discordo</span></label>
+<label class="likert-opcao" for="p3_5_2"><input type="radio" name="p3_5" id="p3_5_2" value="opt2" data-q="p3_5"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p3_5_3"><input type="radio" name="p3_5" id="p3_5_3" value="opt3" data-q="p3_5"><span>Concordo</span></label>
+<label class="likert-opcao" for="p3_5_4"><input type="radio" name="p3_5" id="p3_5_4" value="opt4" data-q="p3_5"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu sei avaliar se uma resposta dada pela Inteligência Artificial é verdadeira e confiável antes de usar ou compartilhar.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p3_6_0"><input type="radio" name="p3_6" id="p3_6_0" value="opt0" data-q="p3_6"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p3_6_1"><input type="radio" name="p3_6" id="p3_6_1" value="opt1" data-q="p3_6"><span>Discordo</span></label>
+<label class="likert-opcao" for="p3_6_2"><input type="radio" name="p3_6" id="p3_6_2" value="opt2" data-q="p3_6"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p3_6_3"><input type="radio" name="p3_6" id="p3_6_3" value="opt3" data-q="p3_6"><span>Concordo</span></label>
+<label class="likert-opcao" for="p3_6_4"><input type="radio" name="p3_6" id="p3_6_4" value="opt4" data-q="p3_6"><span>Concordo
+Totalmente</span></label>
+</div></div></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 3.7</div>
+  <p class="pergunta-texto">Quais destas tecnologias abaixo você acredita que utilizam Inteligência Artificial? (Marque todas as opções que você acha que usam)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_0" value="opt0" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_0">As sugestões de vídeos que aparecem para mim no YouTube, Instagram ou TikTok.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_1" value="opt1" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_1">O reconhecimento do rosto (reconhecimento facial) para destravar o celular.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_2" value="opt2" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_2">Aplicativos de mapas e caminhos (como Google Maps ou Waze).</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_3" value="opt3" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_3">Aplicativos ou sites que traduzem palavras ou textos de outras línguas.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_4" value="opt4" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_4">As mensagens de áudio comuns que eu gravo e mando para a família no WhatsApp.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_5" value="opt5" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_5">Aplicativos de conversa inteligente como ChatGPT, Gemini ou Copilot.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_6" value="opt6" data-q="p3_7" data-exclusive-group="p3_7"><label for="p3_7_6">Filtros que mudam o rosto ou colocam efeitos nas fotos e vídeos do Instagram ou TikTok.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_7" id="p3_7_7" value="opt7" data-q="p3_7" data-exclusive="1" data-exclusive-group="p3_7"><label for="p3_7_7">Não sei dizer quais dessas opções usam Inteligência Artificial.</label></div>
+</div><div class="nota">Se marcar a última opção, as demais serão desmarcadas automaticamente.</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 3.8</div>
+  <p class="pergunta-texto">Onde você mais aprende ou ouve falar sobre Inteligência Artificial? (Escolha apenas a opção principal)</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p3_8" id="p3_8_0" value="opt0" data-q="p3_8"><label for="p3_8_0">Na escola, faculdade ou em cursos que faço.</label></div>
+<div class="opcao"><input type="radio" name="p3_8" id="p3_8_1" value="opt1" data-q="p3_8"><label for="p3_8_1">Conversando com amigos, vizinhos ou parentes.</label></div>
+<div class="opcao"><input type="radio" name="p3_8" id="p3_8_2" value="opt2" data-q="p3_8"><label for="p3_8_2">Vendo postagens ou vídeos nas redes sociais (Instagram, TikTok, WhatsApp, Facebook, YouTube).</label></div>
+<div class="opcao"><input type="radio" name="p3_8" id="p3_8_3" value="opt3" data-q="p3_8"><label for="p3_8_3">Ouvindo no rádio ou na televisão (jornais, programas de TV).</label></div>
+<div class="opcao"><input type="radio" name="p3_8" id="p3_8_4" value="opt4" data-q="p3_8"><label for="p3_8_4">Em espaços da própria comunidade (igreja, associação de moradores, coletivos, reuniões).</label></div>
+<div class="opcao"><input type="radio" name="p3_8" id="p3_8_5" value="opt5" data-q="p3_8"><label for="p3_8_5">Nunca ouvi falar ou não procuro saber sobre esse assunto.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 3.9</div>
+  <p class="pergunta-texto">Pense nos aplicativos de Inteligência Artificial (IA) que você já usou (como ChatGPT, Gemini, etc.). Qual é a sua realidade de acesso a eles?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p3_9" id="p3_9_0" value="opt0" data-q="p3_9"><label for="p3_9_0">Não uso nenhuma ferramenta de IA / Isso não se aplica para mim.</label></div>
+<div class="opcao"><input type="radio" name="p3_9" id="p3_9_1" value="opt1" data-q="p3_9"><label for="p3_9_1">Só uso as versões gratuitas (aquelas que têm limite de perguntas, travam mais ou não têm os recursos mais novos).</label></div>
+<div class="opcao"><input type="radio" name="p3_9" id="p3_9_2" value="opt2" data-q="p3_9"><label for="p3_9_2">Uso quase sempre as versões gratuitas, mas já experimentei ou usei uma versão paga por pouco tempo (como teste grátis).</label></div>
+<div class="opcao"><input type="radio" name="p3_9" id="p3_9_3" value="opt3" data-q="p3_9"><label for="p3_9_3">Tenho acesso pago e constante a ferramentas ou versões avançadas (versão Premium, com todos os recursos liberados e sem limites).</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 3.10</div>
+  <p class="pergunta-texto">Você sabe que as informações, textos, fotos ou áudios que você envia ao conversar com uma IA podem ser guardados por ela para "aprender" e ser treinada?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p3_10" id="p3_10_0" value="opt0" data-q="p3_10"><label for="p3_10_0">Sim, eu já sabia disso com clareza.</label></div>
+<div class="opcao"><input type="radio" name="p3_10" id="p3_10_1" value="opt1" data-q="p3_10"><label for="p3_10_1">Já tinha ouvido falar por alto, mas não sei bem como funciona.</label></div>
+<div class="opcao"><input type="radio" name="p3_10" id="p3_10_2" value="opt2" data-q="p3_10"><label for="p3_10_2">Não, eu não fazia ideia disso.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 3.11</div>
+  <p class="pergunta-texto">Quando você não entende como um aplicativo de IA funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_0" value="opt0" data-q="p3_11"><label for="p3_11_0">Sim, peço ajuda para amigos, parentes ou vizinhos daqui.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_1" value="opt1" data-q="p3_11"><label for="p3_11_1">Sim, procuro lideranças da comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_2" value="opt2" data-q="p3_11"><label for="p3_11_2">Sim, procuro apoio em lugares daqui (escola da região, associação de moradores, coletivos, igreja).</label></div>
+<div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_3" value="opt3" data-q="p3_11"><label for="p3_11_3">Não, tento descobrir as coisas sozinho(a) mexendo na própria internet.</label></div>
+<div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_4" value="opt4" data-q="p3_11"><label for="p3_11_4">Não tenho ninguém e nenhum lugar para me ajudar com isso aqui na comunidade.</label></div>
+</div>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 4 – Percepções, Confiança e Crenças sobre Inteligência Artificial</span></div>
+<div class="modulo-intro">Sobre a Inteligência Artificial (IA), marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
+<div class="pergunta"><div class="likert-row">
+<div class="likert-frase">A Inteligência Artificial pode melhorar o ensino e o aprendizado na minha escola ou comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_1_0"><input type="radio" name="p4_1" id="p4_1_0" value="opt0" data-q="p4_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_1_1"><input type="radio" name="p4_1" id="p4_1_1" value="opt1" data-q="p4_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_1_2"><input type="radio" name="p4_1" id="p4_1_2" value="opt2" data-q="p4_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_1_3"><input type="radio" name="p4_1" id="p4_1_3" value="opt3" data-q="p4_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_1_4"><input type="radio" name="p4_1" id="p4_1_4" value="opt4" data-q="p4_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">A Inteligência Artificial pode ajudar professores(as) e estudantes, sem tirar o lugar e o valor do trabalho humano de quem ensina.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_2_0"><input type="radio" name="p4_2" id="p4_2_0" value="opt0" data-q="p4_2"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_2_1"><input type="radio" name="p4_2" id="p4_2_1" value="opt1" data-q="p4_2"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_2_2"><input type="radio" name="p4_2" id="p4_2_2" value="opt2" data-q="p4_2"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_2_3"><input type="radio" name="p4_2" id="p4_2_3" value="opt3" data-q="p4_2"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_2_4"><input type="radio" name="p4_2" id="p4_2_4" value="opt4" data-q="p4_2"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">A Inteligência Artificial pode espalhar informações falsas, erradas (como fake news), ou explicações incompletas.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_3_0"><input type="radio" name="p4_3" id="p4_3_0" value="opt0" data-q="p4_3"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_3_1"><input type="radio" name="p4_3" id="p4_3_1" value="opt1" data-q="p4_3"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_3_2"><input type="radio" name="p4_3" id="p4_3_2" value="opt2" data-q="p4_3"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_3_3"><input type="radio" name="p4_3" id="p4_3_3" value="opt3" data-q="p4_3"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_3_4"><input type="radio" name="p4_3" id="p4_3_4" value="opt4" data-q="p4_3"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu me sinto seguro(a) e à vontade para enviar meus dados, minhas fotos ou as histórias da minha vida para uma Inteligência Artificial.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_4_0"><input type="radio" name="p4_4" id="p4_4_0" value="opt0" data-q="p4_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_4_1"><input type="radio" name="p4_4" id="p4_4_1" value="opt1" data-q="p4_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_4_2"><input type="radio" name="p4_4" id="p4_4_2" value="opt2" data-q="p4_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_4_3"><input type="radio" name="p4_4" id="p4_4_3" value="opt3" data-q="p4_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_4_4"><input type="radio" name="p4_4" id="p4_4_4" value="opt4" data-q="p4_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu sinto que as ferramentas de IA foram feitas pensando em pessoas que vivem em realidades e lugares muito diferentes do meu.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_5_0"><input type="radio" name="p4_5" id="p4_5_0" value="opt0" data-q="p4_5"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_5_1"><input type="radio" name="p4_5" id="p4_5_1" value="opt1" data-q="p4_5"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_5_2"><input type="radio" name="p4_5" id="p4_5_2" value="opt2" data-q="p4_5"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_5_3"><input type="radio" name="p4_5" id="p4_5_3" value="opt3" data-q="p4_5"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_5_4"><input type="radio" name="p4_5" id="p4_5_4" value="opt4" data-q="p4_5"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu me sentiria mais seguro(a) para usar a Inteligência Artificial se recebesse uma explicação, curso ou treinamento adequado sobre ela.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_6_0"><input type="radio" name="p4_6" id="p4_6_0" value="opt0" data-q="p4_6"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_6_1"><input type="radio" name="p4_6" id="p4_6_1" value="opt1" data-q="p4_6"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_6_2"><input type="radio" name="p4_6" id="p4_6_2" value="opt2" data-q="p4_6"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_6_3"><input type="radio" name="p4_6" id="p4_6_3" value="opt3" data-q="p4_6"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_6_4"><input type="radio" name="p4_6" id="p4_6_4" value="opt4" data-q="p4_6"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu acredito que as grandes empresas que criam as Inteligências Artificiais estão realmente preocupadas em ajudar e melhorar a vida da minha comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p4_7_0"><input type="radio" name="p4_7" id="p4_7_0" value="opt0" data-q="p4_7"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p4_7_1"><input type="radio" name="p4_7" id="p4_7_1" value="opt1" data-q="p4_7"><span>Discordo</span></label>
+<label class="likert-opcao" for="p4_7_2"><input type="radio" name="p4_7" id="p4_7_2" value="opt2" data-q="p4_7"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p4_7_3"><input type="radio" name="p4_7" id="p4_7_3" value="opt3" data-q="p4_7"><span>Concordo</span></label>
+<label class="likert-opcao" for="p4_7_4"><input type="radio" name="p4_7" id="p4_7_4" value="opt4" data-q="p4_7"><span>Concordo
+Totalmente</span></label>
+</div></div></div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 5 – Como a tecnologia e a IA entram na sua vida (Uso e Apropriação Social)</span></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.1</div>
+  <p class="pergunta-texto">Você já usou aparelhos digitais (como celular, computador, internet) ou ferramentas de Inteligência Artificial para alguma destas atividades abaixo? (Marque todas as opções que você já fez)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_0" value="opt0" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_0">Pesquisar sobre a história, os direitos, a cultura ou os problemas do meu povo ou da minha comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_1" value="opt1" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_1">Estudar ou aprender por conta própria algo que não tive a chance de aprender na escola.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_2" value="opt2" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_2">Ensinar, explicar ou ajudar um conhecido, parente ou colega a aprender alguma coisa usando a internet.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_3" value="opt3" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_3">Resolver um problema prático do meu trabalho, da escola, da família ou do dia a dia.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_4" value="opt4" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_4">Organizar reuniões, festas, eventos, campanhas ou ações da comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_5" value="opt5" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_5">Criar textos, fotos, vídeos, cartazes ou postagens para mostrar a realidade do meu lugar para quem é de fora.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_6" value="opt6" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_6">Denunciar, registrar ou cobrar solução para um problema ou injustiça que minha comunidade está sofrendo.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_7" value="opt7" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_7">Buscar informações sobre saúde, remédios, vagas de emprego, benefícios sociais, documentos ou serviços do governo.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_8" value="opt8" data-q="p5_1" data-exclusive="1" data-exclusive-group="p5_1"><label for="p5_1_8">Nunca usei celular, internet ou IA para nenhuma dessas finalidades.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.1.1</div>
+  <p class="pergunta-texto">Se você já usou alguma Inteligência Artificial (como ChatGPT, aplicativos de criar imagens ou áudios) no seu dia a dia, fora das aulas: conte o que você pediu para a IA fazer e como foi o resultado.</p>
+  <div class="pergunta-tipo">Tipo: Campo aberto de texto (Opcional)</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_1_1" id="p5_1_1_0" value="opt0" data-q="p5_1_1"><label for="p5_1_1_0">Sim, já usei fora da escola.<input type="text" class="campo-aberto" placeholder="Espaço para contar como foi (opcional)" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p5_1_1" id="p5_1_1_1" value="opt1" data-q="p5_1_1"><label for="p5_1_1_1">Não, nunca usei IA fora da escola.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.1.2</div>
+  <p class="pergunta-texto">E para estudar ou trabalhar (seja na escola, faculdade ou por conta própria): você já pediu ajuda para alguma Inteligência Artificial em alguma tarefa? Conte como foi.</p>
+  <div class="pergunta-tipo">Tipo: Campo aberto de texto (Opcional)</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_1_2" id="p5_1_2_0" value="opt0" data-q="p5_1_2"><label for="p5_1_2_0">Sim, já usei para estudar/trabalhar.<input type="text" class="campo-aberto" placeholder="Espaço para contar como foi (opcional)" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p5_1_2" id="p5_1_2_1" value="opt1" data-q="p5_1_2"><label for="p5_1_2_1">Não, nunca usei IA para estudar ou trabalhar.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.2</div>
+  <p class="pergunta-texto">Você já participou de algum projeto, curso, oficina ou atividade coletiva sobre tecnologias (como oficinas de vídeo, robótica, cursos de informática ou grupos de conversa sobre IA)?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_2" id="p5_2_0" value="opt0" data-q="p5_2"><label for="p5_2_0">Sim, já participei.</label></div>
+<div class="opcao"><input type="radio" name="p5_2" id="p5_2_1" value="opt1" data-q="p5_2"><label for="p5_2_1">Não participei, mas tenho vontade de participar.</label></div>
+<div class="opcao"><input type="radio" name="p5_2" id="p5_2_2" value="opt2" data-q="p5_2"><label for="p5_2_2">Não participei e, no momento, não tenho interesse.</label></div>
+<div class="opcao"><input type="radio" name="p5_2" id="p5_2_3" value="opt3" data-q="p5_2"><label for="p5_2_3">Não sei responder.</label></div>
+</div><div class="sub-bloco" data-show-if="p5_2_opt0">
+<div class="nota">Se você marcou &#x27;Sim, já participei&#x27;, responda também:</div>
+<p class="pergunta-texto">5.2.1 Como esse projeto ou atividade de tecnologia chegou até você ou sua comunidade?</p><div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_2_1" id="p5_2_1_0" value="opt0" data-q="p5_2_1"><label for="p5_2_1_0">Partiu da nossa própria comunidade: foi uma ideia das nossas lideranças, moradores ou escolas locais para resolver um problema nosso.</label></div>
+<div class="opcao"><input type="radio" name="p5_2_1" id="p5_2_1_1" value="opt1" data-q="p5_2_1"><label for="p5_2_1_1">Veio de fora para dentro: foi um projeto trazido por pessoas ou instituições de fora (governo, ONGs, empresas), sem que a gente participasse da decisão de começar.</label></div>
+<div class="opcao"><input type="radio" name="p5_2_1" id="p5_2_1_2" value="opt2" data-q="p5_2_1"><label for="p5_2_1_2">Foi construído em parceria: as pessoas de fora vieram com a proposta, mas nós decidimos juntos como o projeto seria feito na nossa realidade.</label></div>
+<div class="opcao"><input type="radio" name="p5_2_1" id="p5_2_1_3" value="opt3" data-q="p5_2_1"><label for="p5_2_1_3">Não sei dizer como esse projeto começou.</label></div>
+</div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.3</div>
+  <p class="pergunta-texto">Quando você aprende a mexer em uma tecnologia ou aplicativo novo, o que você costuma fazer? (Escolha a opção que mais acontece)</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_3" id="p5_3_0" value="opt0" data-q="p5_3"><label for="p5_3_0">Uso apenas para mim.</label></div>
+<div class="opcao"><input type="radio" name="p5_3" id="p5_3_1" value="opt1" data-q="p5_3"><label for="p5_3_1">Compartilho e mostro como funciona para a minha família ou amigos.</label></div>
+<div class="opcao"><input type="radio" name="p5_3" id="p5_3_2" value="opt2" data-q="p5_3"><label for="p5_3_2">Ajudo colegas, estudantes ou outras pessoas da comunidade a usar também.</label></div>
+<div class="opcao"><input type="radio" name="p5_3" id="p5_3_3" value="opt3" data-q="p5_3"><label for="p5_3_3">Tento mudar o jeito de usar a ferramenta para resolver um problema específico da minha realidade.</label></div>
+<div class="opcao"><input type="radio" name="p5_3" id="p5_3_4" value="opt4" data-q="p5_3"><label for="p5_3_4">Acho difícil continuar usando e acabo deixando de lado depois de um tempo.</label></div>
+<div class="opcao"><input type="radio" name="p5_3" id="p5_3_5" value="opt5" data-q="p5_3"><label for="p5_3_5">Ainda não passei pela experiência de aprender uma tecnologia nova.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.4</div>
+  <p class="pergunta-texto">Se você pudesse usar uma Inteligência Artificial para ajudar sua escola, comunidade, trabalho ou território, em qual área ela deveria ajudar primeiro? (Selecione no máximo 3 opções)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de Seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_0" value="opt0" data-q="p5_4"><label for="p5_4_0">Educação e aprendizagem.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_1" value="opt1" data-q="p5_4"><label for="p5_4_1">Saúde e bem-estar.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_2" value="opt2" data-q="p5_4"><label for="p5_4_2">Trabalho, renda ou agricultura.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_3" value="opt3" data-q="p5_4"><label for="p5_4_3">Cultura, memória, língua ou tradições.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_4" value="opt4" data-q="p5_4"><label for="p5_4_4">Meio ambiente, território ou clima.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_5" value="opt5" data-q="p5_4"><label for="p5_4_5">Segurança, violência ou proteção da comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_6" value="opt6" data-q="p5_4"><label for="p5_4_6">Acesso a direitos, documentos ou serviços públicos.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_7" value="opt7" data-q="p5_4"><label for="p5_4_7">Comunicação e divulgação da realidade da comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_8" value="opt8" data-q="p5_4"><label for="p5_4_8">Justiça e Direitos Humanos.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_4" id="p5_4_9" value="opt9" data-q="p5_4"><label for="p5_4_9">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div><div class="nota">Selecione no máximo 3 opções.</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.5</div>
+  <p class="pergunta-texto">Se você pudesse inventar ou usar uma Inteligência Artificial para resolver um problema real da sua comunidade ou do seu trabalho hoje, o que você pediria para ela fazer?</p>
+  <div class="pergunta-tipo">Tipo: Campo aberto de texto</div>
+  <textarea class="campo-aberto" name="p5_5" data-q="p5_5" placeholder="Digite sua resposta aqui..."></textarea>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.6</div>
+  <p class="pergunta-texto">Você costuma usar ferramentas de IA sozinho(a) ou junto com outras pessoas (amigos, família, coletivos ou vizinhos) para resolver algo do interesse da comunidade?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_6" id="p5_6_0" value="opt0" data-q="p5_6"><label for="p5_6_0">Uso sempre sozinho(a).</label></div>
+<div class="opcao"><input type="radio" name="p5_6" id="p5_6_1" value="opt1" data-q="p5_6"><label for="p5_6_1">Uso na maioria das vezes sozinho(a).</label></div>
+<div class="opcao"><input type="radio" name="p5_6" id="p5_6_2" value="opt2" data-q="p5_6"><label for="p5_6_2">Uso dividido (metade das vezes sozinho, metade das vezes acompanhado).</label></div>
+<div class="opcao"><input type="radio" name="p5_6" id="p5_6_3" value="opt3" data-q="p5_6"><label for="p5_6_3">Uso na maioria das vezes em grupo, de forma coletiva.</label></div>
+<div class="opcao"><input type="radio" name="p5_6" id="p5_6_4" value="opt4" data-q="p5_6"><label for="p5_6_4">Uso sempre em grupo, de forma comunitária.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 5.7</div>
+  <p class="pergunta-texto">Você já tentou usar uma Inteligência Artificial para criar algo ligado à sua cultura ou à história do seu povo (como desenhar uma lenda antiga, traduzir uma palavra da sua língua ou fazer um cartaz para uma festa tradicional)?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p5_7" id="p5_7_0" value="opt0" data-q="p5_7"><label for="p5_7_0">Sim, já fiz isso e o resultado respeitou e representou bem a nossa cultura.</label></div>
+<div class="opcao"><input type="radio" name="p5_7" id="p5_7_1" value="opt1" data-q="p5_7"><label for="p5_7_1">Sim, tentei fazer, mas o resultado ficou ruim, distorcido ou não representou a nossa cultura de verdade.</label></div>
+<div class="opcao"><input type="radio" name="p5_7" id="p5_7_2" value="opt2" data-q="p5_7"><label for="p5_7_2">Não fiz isso ainda, mas tenho muita vontade de tentar.</label></div>
+<div class="opcao"><input type="radio" name="p5_7" id="p5_7_3" value="opt3" data-q="p5_7"><label for="p5_7_3">Não fiz e não tenho interesse em fazer.</label></div>
+</div>
+</div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 5.8</div>
+  <p class="pergunta-texto">Eu acredito que, se a nossa comunidade souber usar a Inteligência Artificial do nosso jeito, ela pode ser uma ferramenta poderosa para defendermos nossos direitos e nosso território.</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+
+<div class="likert-escala">
+<label class="likert-opcao" for="p5_8_1_0"><input type="radio" name="p5_8_1" id="p5_8_1_0" value="opt0" data-q="p5_8_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p5_8_1_1"><input type="radio" name="p5_8_1" id="p5_8_1_1" value="opt1" data-q="p5_8_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p5_8_1_2"><input type="radio" name="p5_8_1" id="p5_8_1_2" value="opt2" data-q="p5_8_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p5_8_1_3"><input type="radio" name="p5_8_1" id="p5_8_1_3" value="opt3" data-q="p5_8_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p5_8_1_4"><input type="radio" name="p5_8_1" id="p5_8_1_4" value="opt4" data-q="p5_8_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 6 – Cultura, Contexto, Pertencimento e Apropriação</span></div>
+<div class="modulo-intro">Sobre a relação da tecnologia (internet e Inteligência Artificial) com a sua comunidade, marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
+<div class="pergunta"><div class="likert-row">
+<div class="likert-frase">As tecnologias, como sites, aplicativos e Inteligência Artificial, devem respeitar o modo de vida, as tradições e a cultura da minha comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_1_0"><input type="radio" name="p6_1" id="p6_1_0" value="opt0" data-q="p6_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_1_1"><input type="radio" name="p6_1" id="p6_1_1" value="opt1" data-q="p6_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_1_2"><input type="radio" name="p6_1" id="p6_1_2" value="opt2" data-q="p6_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_1_3"><input type="radio" name="p6_1" id="p6_1_3" value="opt3" data-q="p6_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_1_4"><input type="radio" name="p6_1" id="p6_1_4" value="opt4" data-q="p6_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu tenho medo de que o uso da Inteligência Artificial faça as pessoas da minha comunidade esquecerem ou darem menos valor às nossas tradições e raízes.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_2_0"><input type="radio" name="p6_2" id="p6_2_0" value="opt0" data-q="p6_2"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_2_1"><input type="radio" name="p6_2" id="p6_2_1" value="opt1" data-q="p6_2"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_2_2"><input type="radio" name="p6_2" id="p6_2_2" value="opt2" data-q="p6_2"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_2_3"><input type="radio" name="p6_2" id="p6_2_3" value="opt3" data-q="p6_2"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_2_4"><input type="radio" name="p6_2" id="p6_2_4" value="opt4" data-q="p6_2"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">No meu dia a dia, sinto que as coisas que vejo na internet ou na IA (como vídeos, textos e imagens) realmente mostram a nossa cultura e o jeito de viver do meu povo.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_3_0"><input type="radio" name="p6_3" id="p6_3_0" value="opt0" data-q="p6_3"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_3_1"><input type="radio" name="p6_3" id="p6_3_1" value="opt1" data-q="p6_3"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_3_2"><input type="radio" name="p6_3" id="p6_3_2" value="opt2" data-q="p6_3"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_3_3"><input type="radio" name="p6_3" id="p6_3_3" value="opt3" data-q="p6_3"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_3_4"><input type="radio" name="p6_3" id="p6_3_4" value="opt4" data-q="p6_3"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">A Inteligência Artificial pode ser ajustada (adaptada) para ajudar a guardar, proteger e fortalecer a história, a memória, a língua ou os saberes da minha comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_4_0"><input type="radio" name="p6_4" id="p6_4_0" value="opt0" data-q="p6_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_4_1"><input type="radio" name="p6_4" id="p6_4_1" value="opt1" data-q="p6_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_4_2"><input type="radio" name="p6_4" id="p6_4_2" value="opt2" data-q="p6_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_4_3"><input type="radio" name="p6_4" id="p6_4_3" value="opt3" data-q="p6_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_4_4"><input type="radio" name="p6_4" id="p6_4_4" value="opt4" data-q="p6_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">As imagens e textos que a Inteligência Artificial cria sobre comunidades parecidas com a minha são muito diferentes do que a gente vive na realidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_5_0"><input type="radio" name="p6_5" id="p6_5_0" value="opt0" data-q="p6_5"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_5_1"><input type="radio" name="p6_5" id="p6_5_1" value="opt1" data-q="p6_5"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_5_2"><input type="radio" name="p6_5" id="p6_5_2" value="opt2" data-q="p6_5"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_5_3"><input type="radio" name="p6_5" id="p6_5_3" value="opt3" data-q="p6_5"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_5_4"><input type="radio" name="p6_5" id="p6_5_4" value="opt4" data-q="p6_5"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Sinto que as ferramentas de IA só mostram a minha comunidade pelos problemas (como pobreza, falta de recursos ou violência), em vez de mostrar o nosso valor e nossas qualidades.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_6_0"><input type="radio" name="p6_6" id="p6_6_0" value="opt0" data-q="p6_6"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_6_1"><input type="radio" name="p6_6" id="p6_6_1" value="opt1" data-q="p6_6"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_6_2"><input type="radio" name="p6_6" id="p6_6_2" value="opt2" data-q="p6_6"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_6_3"><input type="radio" name="p6_6" id="p6_6_3" value="opt3" data-q="p6_6"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_6_4"><input type="radio" name="p6_6" id="p6_6_4" value="opt4" data-q="p6_6"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">O conhecimento tradicional e a sabedoria local da minha comunidade devem ser valorizados e respeitados na hora de criar ou usar tecnologias e IA.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_7_0"><input type="radio" name="p6_7" id="p6_7_0" value="opt0" data-q="p6_7"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_7_1"><input type="radio" name="p6_7" id="p6_7_1" value="opt1" data-q="p6_7"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_7_2"><input type="radio" name="p6_7" id="p6_7_2" value="opt2" data-q="p6_7"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_7_3"><input type="radio" name="p6_7" id="p6_7_3" value="opt3" data-q="p6_7"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_7_4"><input type="radio" name="p6_7" id="p6_7_4" value="opt4" data-q="p6_7"><span>Concordo
+Totalmente</span></label>
+</div></div></div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 6.8</div>
+  <p class="pergunta-texto">A minha comunidade deveria poder corrigir ou reclamar (contestar) quando uma IA representa nosso povo, território, cultura ou modo de falar de forma errada.</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_8_1_0"><input type="radio" name="p6_8_1" id="p6_8_1_0" value="opt0" data-q="p6_8_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_8_1_1"><input type="radio" name="p6_8_1" id="p6_8_1_1" value="opt1" data-q="p6_8_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_8_1_2"><input type="radio" name="p6_8_1" id="p6_8_1_2" value="opt2" data-q="p6_8_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_8_1_3"><input type="radio" name="p6_8_1" id="p6_8_1_3" value="opt3" data-q="p6_8_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_8_1_4"><input type="radio" name="p6_8_1" id="p6_8_1_4" value="opt4" data-q="p6_8_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 6.9</div>
+  <p class="pergunta-texto">As histórias, imagens, cantos, palavras, tradições ou conhecimentos da minha comunidade só devem ser usados por tecnologias ou IA com autorização e respeito.</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+
+<div class="likert-escala">
+<label class="likert-opcao" for="p6_9_1_0"><input type="radio" name="p6_9_1" id="p6_9_1_0" value="opt0" data-q="p6_9_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p6_9_1_1"><input type="radio" name="p6_9_1" id="p6_9_1_1" value="opt1" data-q="p6_9_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p6_9_1_2"><input type="radio" name="p6_9_1" id="p6_9_1_2" value="opt2" data-q="p6_9_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p6_9_1_3"><input type="radio" name="p6_9_1" id="p6_9_1_3" value="opt3" data-q="p6_9_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p6_9_1_4"><input type="radio" name="p6_9_1" id="p6_9_1_4" value="opt4" data-q="p6_9_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 6.10</div>
+  <p class="pergunta-texto">Quando você usa uma Inteligência Artificial para criar alguma coisa (como um texto ou uma imagem), sente que precisa "fingir ser outra pessoa" ou usar palavras difíceis que não são do seu dia a dia para a máquina conseguir te entender?</p>
+  <div class="pergunta-tipo">Tipo: Escala de frequência</div>
+  <div class="freq-escala">
+<label class="likert-opcao" for="p6_10_0"><input type="radio" name="p6_10" id="p6_10_0" value="opt0" data-q="p6_10"><span>1
+Nunca</span></label>
+<label class="likert-opcao" for="p6_10_1"><input type="radio" name="p6_10" id="p6_10_1" value="opt1" data-q="p6_10"><span>2
+Raramente</span></label>
+<label class="likert-opcao" for="p6_10_2"><input type="radio" name="p6_10" id="p6_10_2" value="opt2" data-q="p6_10"><span>3
+Às vezes</span></label>
+<label class="likert-opcao" for="p6_10_3"><input type="radio" name="p6_10" id="p6_10_3" value="opt3" data-q="p6_10"><span>4
+Frequentemente</span></label>
+<label class="likert-opcao" for="p6_10_4"><input type="radio" name="p6_10" id="p6_10_4" value="opt4" data-q="p6_10"><span>5
+Sempre</span></label>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 6.11</div>
+  <p class="pergunta-texto">O que mais faz você sentir que as tecnologias atuais (internet ou IA) NÃO combinam ou NÃO pertencem à realidade do seu lugar? (Você pode marcar mais de uma opção)</p>
+  <div class="pergunta-tipo">Tipo: Caixa de Seleção</div>
+  <div class="opcoes">
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_0" value="opt0" data-q="p6_11"><label for="p6_11_0">As pessoas que aparecem nas imagens e vídeos são muito diferentes de mim e dos meus vizinhos.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_1" value="opt1" data-q="p6_11"><label for="p6_11_1">O jeito de falar das ferramentas é muito formal, artificial ou usa termos que ninguém usa por aqui.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_2" value="opt2" data-q="p6_11"><label for="p6_11_2">As ferramentas focam em coisas que não fazem parte da nossa cultura e dia a dia.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_3" value="opt3" data-q="p6_11"><label for="p6_11_3">A IA ignora ou erra o nome de lugares da nossa região ou tradições.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_4" value="opt4" data-q="p6_11"><label for="p6_11_4">Sinto que preciso ter um nível de estudo muito alto ou técnico para conseguir entender como usar essas ferramentas.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_5" value="opt5" data-q="p6_11"><label for="p6_11_5">Falta conteúdo feito na nossa própria língua nativa, no nosso sotaque ou que fale sobre a nossa realidade real.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_6" value="opt6" data-q="p6_11"><label for="p6_11_6">Tenho medo de que as empresas usem nossa cultura, nossa imagem ou nossos conhecimentos tradicionais sem pedir permissão.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_7" value="opt7" data-q="p6_11"><label for="p6_11_7">A tecnologia quase sempre mostra minha comunidade associada apenas a problemas, pobreza, crimes ou estereótipos preconceituosos.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_8" value="opt8" data-q="p6_11"><label for="p6_11_8">Não sinto essa distância; acho que a tecnologia combina totalmente comigo e com o meu lugar.</label></div>
+<div class="opcao"><input type="checkbox" name="p6_11" id="p6_11_9" value="opt9" data-q="p6_11"><label for="p6_11_9">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 6.12</div>
+  <p class="pergunta-texto">Você acredita que seria possível construirmos uma Inteligência Artificial que falasse e entendesse perfeitamente a língua ou o jeito de falar próprio da sua comunidade (ex: o dialeto da comunidade, o falar beiradão, o falar quilombola, ou uma língua indígena)?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p6_12" id="p6_12_0" value="opt0" data-q="p6_12"><label for="p6_12_0">Sim, acredito totalmente que isso é possível de ser feito.</label></div>
+<div class="opcao"><input type="radio" name="p6_12" id="p6_12_1" value="opt1" data-q="p6_12"><label for="p6_12_1">Sim, mas acho que seria muito difícil de conseguir fazer.</label></div>
+<div class="opcao"><input type="radio" name="p6_12" id="p6_12_2" value="opt2" data-q="p6_12"><label for="p6_12_2">Não, não acho que isso seja possível.</label></div>
+<div class="opcao"><input type="radio" name="p6_12" id="p6_12_3" value="opt3" data-q="p6_12"><label for="p6_12_3">Não sei dizer ou não tenho certeza.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 6.13</div>
+  <p class="pergunta-texto">Se uma Inteligência Artificial pudesse contar a história e a cultura da sua comunidade para o resto do mundo, qual parte da sua cultura ou realidade do seu povo, você não gostaria que ela esquecesse ou contasse de forma errada?</p>
+  <div class="pergunta-tipo">Tipo: Campo aberto de texto livre</div>
+  <textarea class="campo-aberto" name="p6_13" data-q="p6_13" placeholder="Digite sua resposta aqui..."></textarea>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 7 – Justiça, Ética e Inclusão em IA</span></div>
+<div class="modulo-intro">Sobre a justiça, os direitos e o acesso às tecnologias, marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
+<div class="pergunta"><div class="likert-row">
+<div class="likert-frase">Eu acredito que a Inteligência Artificial pode aumentar a desigualdade entre quem vive no centro das grandes cidades e quem mora em comunidades isoladas ou tradicionais.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_1_0"><input type="radio" name="p7_1" id="p7_1_0" value="opt0" data-q="p7_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_1_1"><input type="radio" name="p7_1" id="p7_1_1" value="opt1" data-q="p7_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_1_2"><input type="radio" name="p7_1" id="p7_1_2" value="opt2" data-q="p7_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_1_3"><input type="radio" name="p7_1" id="p7_1_3" value="opt3" data-q="p7_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_1_4"><input type="radio" name="p7_1" id="p7_1_4" value="opt4" data-q="p7_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">É muito importante que as escolas, cursos e projetos ensinem sobre ética (o que é certo, seguro e respeitoso) na hora de usar as tecnologias e a IA.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_2_0"><input type="radio" name="p7_2" id="p7_2_0" value="opt0" data-q="p7_2"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_2_1"><input type="radio" name="p7_2" id="p7_2_1" value="opt1" data-q="p7_2"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_2_2"><input type="radio" name="p7_2" id="p7_2_2" value="opt2" data-q="p7_2"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_2_3"><input type="radio" name="p7_2" id="p7_2_3" value="opt3" data-q="p7_2"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_2_4"><input type="radio" name="p7_2" id="p7_2_4" value="opt4" data-q="p7_2"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">O acesso à internet de qualidade e às ferramentas de Inteligência Artificial deveria ser um direito garantido para todas as pessoas.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_3_0"><input type="radio" name="p7_3" id="p7_3_0" value="opt0" data-q="p7_3"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_3_1"><input type="radio" name="p7_3" id="p7_3_1" value="opt1" data-q="p7_3"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_3_2"><input type="radio" name="p7_3" id="p7_3_2" value="opt2" data-q="p7_3"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_3_3"><input type="radio" name="p7_3" id="p7_3_3" value="opt3" data-q="p7_3"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_3_4"><input type="radio" name="p7_3" id="p7_3_4" value="opt4" data-q="p7_3"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Apenas dar acesso à tecnologia não basta: se a IA não respeitar os nossos saberes locais e tradições, ela pode se tornar uma nova forma de apagar a cultura da minha comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_4_0"><input type="radio" name="p7_4" id="p7_4_0" value="opt0" data-q="p7_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_4_1"><input type="radio" name="p7_4" id="p7_4_1" value="opt1" data-q="p7_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_4_2"><input type="radio" name="p7_4" id="p7_4_2" value="opt2" data-q="p7_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_4_3"><input type="radio" name="p7_4" id="p7_4_3" value="opt3" data-q="p7_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_4_4"><input type="radio" name="p7_4" id="p7_4_4" value="opt4" data-q="p7_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Eu me preocupo ou tenho medo de que a Inteligência Artificial seja usada por governos, empresas ou pessoas de fora para vigiar, rastrear ou controlar a vida dos moradores da minha comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_5_0"><input type="radio" name="p7_5" id="p7_5_0" value="opt0" data-q="p7_5"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_5_1"><input type="radio" name="p7_5" id="p7_5_1" value="opt1" data-q="p7_5"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_5_2"><input type="radio" name="p7_5" id="p7_5_2" value="opt2" data-q="p7_5"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_5_3"><input type="radio" name="p7_5" id="p7_5_3" value="opt3" data-q="p7_5"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_5_4"><input type="radio" name="p7_5" id="p7_5_4" value="opt4" data-q="p7_5"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Para que a IA seja inclusiva de verdade, ela deveria ser criada com a participação de trabalhadores, técnicos e pesquisadores que venham de periferias e povos tradicionais, e não apenas por grandes empresas de fora.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_6_0"><input type="radio" name="p7_6" id="p7_6_0" value="opt0" data-q="p7_6"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_6_1"><input type="radio" name="p7_6" id="p7_6_1" value="opt1" data-q="p7_6"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_6_2"><input type="radio" name="p7_6" id="p7_6_2" value="opt2" data-q="p7_6"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_6_3"><input type="radio" name="p7_6" id="p7_6_3" value="opt3" data-q="p7_6"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_6_4"><input type="radio" name="p7_6" id="p7_6_4" value="opt4" data-q="p7_6"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Deveria existir uma lei ou regra rígida que obrigue as grandes empresas de tecnologia a assumirem a responsabilidade e pagarem por qualquer erro, preconceito ou dano que suas IAs causem ao nosso povo.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_7_0"><input type="radio" name="p7_7" id="p7_7_0" value="opt0" data-q="p7_7"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_7_1"><input type="radio" name="p7_7" id="p7_7_1" value="opt1" data-q="p7_7"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_7_2"><input type="radio" name="p7_7" id="p7_7_2" value="opt2" data-q="p7_7"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_7_3"><input type="radio" name="p7_7" id="p7_7_3" value="opt3" data-q="p7_7"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_7_4"><input type="radio" name="p7_7" id="p7_7_4" value="opt4" data-q="p7_7"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">As empresas de tecnologia deveriam prestar contas e se preocupar com o impacto que o funcionamento da IA causa na natureza, nas florestas, nos rios e no clima.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p7_8_0"><input type="radio" name="p7_8" id="p7_8_0" value="opt0" data-q="p7_8"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p7_8_1"><input type="radio" name="p7_8" id="p7_8_1" value="opt1" data-q="p7_8"><span>Discordo</span></label>
+<label class="likert-opcao" for="p7_8_2"><input type="radio" name="p7_8" id="p7_8_2" value="opt2" data-q="p7_8"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p7_8_3"><input type="radio" name="p7_8" id="p7_8_3" value="opt3" data-q="p7_8"><span>Concordo</span></label>
+<label class="likert-opcao" for="p7_8_4"><input type="radio" name="p7_8" id="p7_8_4" value="opt4" data-q="p7_8"><span>Concordo
+Totalmente</span></label>
+</div></div></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 7.9</div>
+  <p class="pergunta-texto">Para você, quem deveria ser o principal responsável por ensinar as pessoas a usarem a Inteligência Artificial de forma ética, segura e responsável?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla Escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_0" value="opt0" data-q="p7_9"><label for="p7_9_0">As escolas e os professores no dia a dia.</label></div>
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_1" value="opt1" data-q="p7_9"><label for="p7_9_1">As grandes empresas que criam a tecnologia (como Google, Microsoft, OpenAI).</label></div>
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_2" value="opt2" data-q="p7_9"><label for="p7_9_2">O governo, criando leis, regras e campanhas de explicação.</label></div>
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_3" value="opt3" data-q="p7_9"><label for="p7_9_3">A própria comunidade, por meio de suas lideranças, coletivos e famílias.</label></div>
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_4" value="opt4" data-q="p7_9"><label for="p7_9_4">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_5" value="opt5" data-q="p7_9"><label for="p7_9_5">Ninguém precisa ensinar; cada pessoa aprende e descobre sozinho.</label></div>
+</div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 7.10</div>
+  <p class="pergunta-texto">Você já passou pela experiência de se sentir excluído(a), confuso(a) ou deixado(a) de lado ao tentar usar a internet ou alguma ferramenta de Inteligência Artificial?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla Escolha (Condicional)</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p7_10" id="p7_10_0" value="opt0" data-q="p7_10"><label for="p7_10_0">Sim</label></div>
+<div class="opcao"><input type="radio" name="p7_10" id="p7_10_1" value="opt1" data-q="p7_10"><label for="p7_10_1">Não</label></div>
+</div><div class="sub-bloco" data-show-if="p7_10_opt0">
+<div class="nota">Se respondeu &#x27;Sim&#x27;:</div>
+<p class="pergunta-texto">Conte para nós o que aconteceu e como você se sentiu naquele momento:</p><textarea class="campo-aberto" name="p7_10_relato" data-q="p7_10_relato" placeholder="Sua resposta (opcional)"></textarea>
+</div>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 8 – Governança e Autonomia Tecnológica</span></div>
+<div class="modulo-intro">Sobre a sua participação, o controle dos seus dados e as decisões da comunidade, marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
+<div class="pergunta"><div class="likert-row">
+<div class="likert-frase">Sinto que as pessoas da minha comunidade são realmente ouvidas (têm voz) quando novas tecnologias ou projetos de internet são trazidos para o nosso lugar.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p8_1_0"><input type="radio" name="p8_1" id="p8_1_0" value="opt0" data-q="p8_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p8_1_1"><input type="radio" name="p8_1" id="p8_1_1" value="opt1" data-q="p8_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p8_1_2"><input type="radio" name="p8_1" id="p8_1_2" value="opt2" data-q="p8_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p8_1_3"><input type="radio" name="p8_1" id="p8_1_3" value="opt3" data-q="p8_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p8_1_4"><input type="radio" name="p8_1" id="p8_1_4" value="opt4" data-q="p8_1"><span>Concordo
+Totalmente</span></label>
+</div></div><div class="sub-bloco" data-show-if="p8_1_any">
+<div class="nota">De acordo com a resposta da pergunta 8.1, este bloco extra é exibido:</div>
+<p class="pergunta-texto">8.1.1 Se houvesse um espaço, conselho ou reunião para a sua comunidade decidir junto sobre as tecnologias que chegam até vocês, qual seria o seu interesse em fazer parte disso?</p><div class="opcoes">
+<div class="opcao"><input type="radio" name="p8_1_1" id="p8_1_1_0" value="opt0" data-q="p8_1_1"><label for="p8_1_1_0">Muito interessado(a): Gostaria de participar ativamente das reuniões e ajudar a ensinar os técnicos e cientistas sobre a realidade do nosso lugar.</label></div>
+<div class="opcao"><input type="radio" name="p8_1_1" id="p8_1_1_1" value="opt1" data-q="p8_1_1"><label for="p8_1_1_1">Interessado(a): Gostaria de ser informado(a) com clareza e dar minha opinião antes de qualquer decisão ser tomada pelas autoridades.</label></div>
+<div class="opcao"><input type="radio" name="p8_1_1" id="p8_1_1_2" value="opt2" data-q="p8_1_1"><label for="p8_1_1_2">Pouco interessado(a): Prefiro que apenas as nossas lideranças e representantes participem e depois nos contem o que ficou decidido.</label></div>
+<div class="opcao"><input type="radio" name="p8_1_1" id="p8_1_1_3" value="opt3" data-q="p8_1_1"><label for="p8_1_1_3">Nada interessado(a): Não acho que a nossa opinião vá mudar o que as grandes empresas ou o governo já decidiram de cima para baixo.</label></div>
+</div>
+</div></div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 8.2</div>
+  <p class="pergunta-texto">As escolas, a prefeitura ou as associações dão o treinamento e o apoio prático que eu preciso para conseguir usar a Inteligência Artificial de um jeito seguro no meu dia a dia.</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+
+<div class="likert-escala">
+<label class="likert-opcao" for="p8_2_1_0"><input type="radio" name="p8_2_1" id="p8_2_1_0" value="opt0" data-q="p8_2_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p8_2_1_1"><input type="radio" name="p8_2_1" id="p8_2_1_1" value="opt1" data-q="p8_2_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p8_2_1_2"><input type="radio" name="p8_2_1" id="p8_2_1_2" value="opt2" data-q="p8_2_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p8_2_1_3"><input type="radio" name="p8_2_1" id="p8_2_1_3" value="opt3" data-q="p8_2_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p8_2_1_4"><input type="radio" name="p8_2_1" id="p8_2_1_4" value="opt4" data-q="p8_2_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta">
+  <div class="pergunta-num">Pergunta 8.3</div>
+  <p class="pergunta-texto">Sinto que minha comunidade tem liberdade para usar as tecnologias do nosso próprio jeito, respeitando nossas regras e tradições locais.</p>
+  <div class="pergunta-tipo">Tipo: Escala Likert</div>
+  <div class="likert-row">
+
+<div class="likert-escala">
+<label class="likert-opcao" for="p8_3_1_0"><input type="radio" name="p8_3_1" id="p8_3_1_0" value="opt0" data-q="p8_3_1"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p8_3_1_1"><input type="radio" name="p8_3_1" id="p8_3_1_1" value="opt1" data-q="p8_3_1"><span>Discordo</span></label>
+<label class="likert-opcao" for="p8_3_1_2"><input type="radio" name="p8_3_1" id="p8_3_1_2" value="opt2" data-q="p8_3_1"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p8_3_1_3"><input type="radio" name="p8_3_1" id="p8_3_1_3" value="opt3" data-q="p8_3_1"><span>Concordo</span></label>
+<label class="likert-opcao" for="p8_3_1_4"><input type="radio" name="p8_3_1" id="p8_3_1_4" value="opt4" data-q="p8_3_1"><span>Concordo
+Totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta"><div class="likert-row">
+<div class="likert-frase">Eu confio nos grupos e instituições de fora (como governo, empresas de tecnologia ou ONGs) que trazem novas ferramentas e internet para dentro da minha comunidade.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p8_4_0"><input type="radio" name="p8_4" id="p8_4_0" value="opt0" data-q="p8_4"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p8_4_1"><input type="radio" name="p8_4" id="p8_4_1" value="opt1" data-q="p8_4"><span>Discordo</span></label>
+<label class="likert-opcao" for="p8_4_2"><input type="radio" name="p8_4" id="p8_4_2" value="opt2" data-q="p8_4"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p8_4_3"><input type="radio" name="p8_4" id="p8_4_3" value="opt3" data-q="p8_4"><span>Concordo</span></label>
+<label class="likert-opcao" for="p8_4_4"><input type="radio" name="p8_4" id="p8_4_4" value="opt4" data-q="p8_4"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Acredito que as histórias, fotos, áudios e informações que a IA recolhe sobre a nossa comunidade deveriam ficar protegidos e guardados com a gente, e não pertencer apenas às grandes empresas.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p8_5_0"><input type="radio" name="p8_5" id="p8_5_0" value="opt0" data-q="p8_5"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p8_5_1"><input type="radio" name="p8_5" id="p8_5_1" value="opt1" data-q="p8_5"><span>Discordo</span></label>
+<label class="likert-opcao" for="p8_5_2"><input type="radio" name="p8_5" id="p8_5_2" value="opt2" data-q="p8_5"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p8_5_3"><input type="radio" name="p8_5" id="p8_5_3" value="opt3" data-q="p8_5"><span>Concordo</span></label>
+<label class="likert-opcao" for="p8_5_4"><input type="radio" name="p8_5" id="p8_5_4" value="opt4" data-q="p8_5"><span>Concordo
+Totalmente</span></label>
+</div></div>
+<div class="likert-row">
+<div class="likert-frase">Se a nossa comunidade se reunir e decidir que NÃO quer usar uma determinada ferramenta de Inteligência Artificial, o governo e as empresas devem respeitar a nossa vontade e ficar de fora.</div>
+<div class="likert-escala">
+<label class="likert-opcao" for="p8_6_0"><input type="radio" name="p8_6" id="p8_6_0" value="opt0" data-q="p8_6"><span>Discordo
+Totalmente</span></label>
+<label class="likert-opcao" for="p8_6_1"><input type="radio" name="p8_6" id="p8_6_1" value="opt1" data-q="p8_6"><span>Discordo</span></label>
+<label class="likert-opcao" for="p8_6_2"><input type="radio" name="p8_6" id="p8_6_2" value="opt2" data-q="p8_6"><span>Nem concordo
+nem discordo</span></label>
+<label class="likert-opcao" for="p8_6_3"><input type="radio" name="p8_6" id="p8_6_3" value="opt3" data-q="p8_6"><span>Concordo</span></label>
+<label class="likert-opcao" for="p8_6_4"><input type="radio" name="p8_6" id="p8_6_4" value="opt4" data-q="p8_6"><span>Concordo
+Totalmente</span></label>
+</div></div></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 8.7</div>
+  <p class="pergunta-texto">Pensando na proteção dos seus dados (suas informações pessoais e da sua comunidade), quanto você confia em cada um destes grupos para decidir sobre o uso de IA na sua região?</p>
+  <div class="pergunta-tipo">Tipo: Matriz Likert de Confiança</div>
+  <div class="confianca-item">
+<div class="confianca-nome">Grandes empresas de tecnologia (como Google, Facebook, WhatsApp, OpenAI)</div>
+<div class="confianca-escala">
+<label class="likert-opcao" for="p8_7_1_0"><input type="radio" name="p8_7_1" id="p8_7_1_0" value="opt0" data-q="p8_7_1"><span>Não confio nada</span></label>
+<label class="likert-opcao" for="p8_7_1_1"><input type="radio" name="p8_7_1" id="p8_7_1_1" value="opt1" data-q="p8_7_1"><span>Confio pouco</span></label>
+<label class="likert-opcao" for="p8_7_1_2"><input type="radio" name="p8_7_1" id="p8_7_1_2" value="opt2" data-q="p8_7_1"><span>Confio muito</span></label>
+<label class="likert-opcao" for="p8_7_1_3"><input type="radio" name="p8_7_1" id="p8_7_1_3" value="opt3" data-q="p8_7_1"><span>Confio totalmente</span></label>
+</div></div>
+<div class="confianca-item">
+<div class="confianca-nome">Governo Federal (em Brasília)</div>
+<div class="confianca-escala">
+<label class="likert-opcao" for="p8_7_2_0"><input type="radio" name="p8_7_2" id="p8_7_2_0" value="opt0" data-q="p8_7_2"><span>Não confio nada</span></label>
+<label class="likert-opcao" for="p8_7_2_1"><input type="radio" name="p8_7_2" id="p8_7_2_1" value="opt1" data-q="p8_7_2"><span>Confio pouco</span></label>
+<label class="likert-opcao" for="p8_7_2_2"><input type="radio" name="p8_7_2" id="p8_7_2_2" value="opt2" data-q="p8_7_2"><span>Confio muito</span></label>
+<label class="likert-opcao" for="p8_7_2_3"><input type="radio" name="p8_7_2" id="p8_7_2_3" value="opt3" data-q="p8_7_2"><span>Confio totalmente</span></label>
+</div></div>
+<div class="confianca-item">
+<div class="confianca-nome">Governos Locais (Prefeitura da minha cidade e Governo do meu Estado)</div>
+<div class="confianca-escala">
+<label class="likert-opcao" for="p8_7_3_0"><input type="radio" name="p8_7_3" id="p8_7_3_0" value="opt0" data-q="p8_7_3"><span>Não confio nada</span></label>
+<label class="likert-opcao" for="p8_7_3_1"><input type="radio" name="p8_7_3" id="p8_7_3_1" value="opt1" data-q="p8_7_3"><span>Confio pouco</span></label>
+<label class="likert-opcao" for="p8_7_3_2"><input type="radio" name="p8_7_3" id="p8_7_3_2" value="opt2" data-q="p8_7_3"><span>Confio muito</span></label>
+<label class="likert-opcao" for="p8_7_3_3"><input type="radio" name="p8_7_3" id="p8_7_3_3" value="opt3" data-q="p8_7_3"><span>Confio totalmente</span></label>
+</div></div>
+<div class="confianca-item">
+<div class="confianca-nome">Líderes comunitários, Caciques e Associações do nosso próprio território</div>
+<div class="confianca-escala">
+<label class="likert-opcao" for="p8_7_4_0"><input type="radio" name="p8_7_4" id="p8_7_4_0" value="opt0" data-q="p8_7_4"><span>Não confio nada</span></label>
+<label class="likert-opcao" for="p8_7_4_1"><input type="radio" name="p8_7_4" id="p8_7_4_1" value="opt1" data-q="p8_7_4"><span>Confio pouco</span></label>
+<label class="likert-opcao" for="p8_7_4_2"><input type="radio" name="p8_7_4" id="p8_7_4_2" value="opt2" data-q="p8_7_4"><span>Confio muito</span></label>
+<label class="likert-opcao" for="p8_7_4_3"><input type="radio" name="p8_7_4" id="p8_7_4_3" value="opt3" data-q="p8_7_4"><span>Confio totalmente</span></label>
+</div></div>
+<div class="confianca-item">
+<div class="confianca-nome">Universidades e Pesquisadores Científicos (como os cientistas que fazem este estudo)</div>
+<div class="confianca-escala">
+<label class="likert-opcao" for="p8_7_5_0"><input type="radio" name="p8_7_5" id="p8_7_5_0" value="opt0" data-q="p8_7_5"><span>Não confio nada</span></label>
+<label class="likert-opcao" for="p8_7_5_1"><input type="radio" name="p8_7_5" id="p8_7_5_1" value="opt1" data-q="p8_7_5"><span>Confio pouco</span></label>
+<label class="likert-opcao" for="p8_7_5_2"><input type="radio" name="p8_7_5" id="p8_7_5_2" value="opt2" data-q="p8_7_5"><span>Confio muito</span></label>
+<label class="likert-opcao" for="p8_7_5_3"><input type="radio" name="p8_7_5" id="p8_7_5_3" value="opt3" data-q="p8_7_5"><span>Confio totalmente</span></label>
+</div></div>
+</div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta 8.8</div>
+  <p class="pergunta-texto">Se uma nova tecnologia ou projeto de Inteligência Artificial fosse chegar à sua comunidade hoje, como você gostaria que fosse decidida a entrada dele?</p>
+  <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
+  <div class="opcoes">
+<div class="opcao"><input type="radio" name="p8_8" id="p8_8_0" value="opt0" data-q="p8_8"><label for="p8_8_0">Os líderes ou associações deveriam ser consultados primeiro.</label></div>
+<div class="opcao"><input type="radio" name="p8_8" id="p8_8_1" value="opt1" data-q="p8_8"><label for="p8_8_1">Deveria haver uma assembleia ou reunião aberta com votação para todos os moradores decidirem juntos.</label></div>
+<div class="opcao"><input type="radio" name="p8_8" id="p8_8_2" value="opt2" data-q="p8_8"><label for="p8_8_2">A decisão deve ser tomada apenas pelos especialistas e técnicos que criaram e trouxeram a tecnologia.</label></div>
+<div class="opcao"><input type="radio" name="p8_8" id="p8_8_3" value="opt3" data-q="p8_8"><label for="p8_8_3">O governo deve decidir sozinho o que é melhor para nós, sem precisar fazer reuniões locais.</label></div>
+<div class="opcao"><input type="radio" name="p8_8" id="p8_8_4" value="opt4" data-q="p8_8"><label for="p8_8_4">Não me importo com quem decide, desde que a tecnologia funcione.</label></div>
+<div class="opcao"><input type="radio" name="p8_8" id="p8_8_5" value="opt5" data-q="p8_8"><label for="p8_8_5">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
+</div>
+</div>
+</div>
+<hr class="divisor">
+<div class="modulo">
+<div class="modulo-header"><span class="icone">✉️</span><span>Considerações Finais</span></div>
+<div class="pergunta ">
+  <div class="pergunta-num">Pergunta Final</div>
+  <p class="pergunta-texto">Existe algo sobre tecnologia, computadores ou Inteligência Artificial que nós não perguntamos, mas que você gostaria de desabafar, sugerir ou dizer que te preocupa?</p>
+  <div class="pergunta-tipo">Tipo: Campo aberto de texto livre</div>
+  <textarea class="campo-aberto" name="pfinal" data-q="pfinal" placeholder="Digite sua resposta aqui..."></textarea>
+</div>
+</div>
+
+<div class="finalizar">
+  <button class="btn-enviar" id="btnEnviar" type="button">Concluir questionário</button>
+  <div class="mensagem-final" id="mensagemFinal">Obrigado por participar! Suas respostas foram registradas nesta página. (Esta é uma versão de visualização do questionário — para envio real, integre este formulário a um sistema de coleta de dados.)</div>
+  <div class="ajuda-flutuante">Suas respostas ficam salvas apenas neste navegador, nesta página, enquanto você responde.</div>
+</div>
+
+</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function(){
+  var form = document.getElementById('formulario');
+  var allCountable = Array.from(form.querySelectorAll('[data-q]')).filter(function(el){
+    return el.getAttribute('data-countable') !== '0';
+  });
+  var qNames = Array.from(new Set(allCountable.map(function(el){return el.getAttribute('data-q');})));
+
+  function isAnswered(name){
+    var els = form.querySelectorAll('[name="'+name+'"], [data-q="'+name+'"]');
+    for (var i=0;i<els.length;i++){
+      var el = els[i];
+      if (el.type === 'radio' || el.type === 'checkbox'){
+        if (el.checked) return true;
+      } else if (el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.type === 'text'){
+        if (el.value && el.value.trim() !== '') return true;
+      }
+    }
+    return false;
+  }
+
+  function updateProgress(){
+    var answered = 0;
+    qNames.forEach(function(name){ if (isAnswered(name)) answered++; });
+    var pct = Math.round((answered / qNames.length) * 100);
+    document.getElementById('barraProgresso').style.width = pct + '%';
+    document.getElementById('rotuloProgresso').textContent = pct + '% respondido (' + answered + ' de ' + qNames.length + ' perguntas)';
+  }
+
+  // Exclusive checkbox logic (e.g., "Não sei dizer" deselects others in same group)
+  form.querySelectorAll('input[type="checkbox"][data-exclusive="1"]').forEach(function(excl){
+    excl.addEventListener('change', function(){
+      var group = excl.getAttribute('data-exclusive-group');
+      var name = excl.name;
+      if (excl.checked){
+        form.querySelectorAll('input[name="'+name+'"]').forEach(function(other){
+          if (other !== excl) other.checked = false;
+        });
+      }
+      updateProgress();
+    });
+  });
+  // If any non-exclusive option in a group with an exclusive option is checked, uncheck the exclusive one
+  form.querySelectorAll('input[type="checkbox"]').forEach(function(cb){
+    cb.addEventListener('change', function(){
+      var name = cb.name;
+      var exclusiveInputs = form.querySelectorAll('input[name="'+name+'"][data-exclusive="1"]');
+      if (exclusiveInputs.length && !cb.hasAttribute('data-exclusive')){
+        if (cb.checked){
+          exclusiveInputs.forEach(function(ex){ ex.checked = false; });
+        }
+      }
+    });
+  });
+
+  // Conditional sub-blocks
+  // 1.5: indigenous community option (index 2) reveals ethnicity field
+  function bindCondition(triggerName, triggerValue, targetSelector){
+    var target = form.querySelector(targetSelector);
+    if (!target) return;
+    form.querySelectorAll('input[name="'+triggerName+'"]').forEach(function(input){
+      input.addEventListener('change', function(){
+        if (input.checked && input.value === triggerValue){
+          target.classList.add('ativo');
+        } else if (input.checked) {
+          target.classList.remove('ativo');
+        }
+        updateProgress();
+      });
+    });
+  }
+  bindCondition('p1_5','opt2','[data-show-if="p1_5_opt2"]');
+  bindCondition('p1_13','opt1','[data-show-if="p1_13_opt1"]');
+  bindCondition('p1_14','opt0','[data-show-if="p1_14_opt0"]');
+  bindCondition('p5_2','opt0','[data-show-if="p5_2_opt0"]');
+  bindCondition('p7_10','opt0','[data-show-if="p7_10_opt0"]');
+
+  // 8.1.1: shown regardless of which option in 8.1 was chosen (any answer triggers it)
+  var p81target = form.querySelector('[data-show-if="p8_1_any"]');
+  if (p81target){
+    form.querySelectorAll('input[name="p8_1"]').forEach(function(input){
+      input.addEventListener('change', function(){
+        if (input.checked) p81target.classList.add('ativo');
+        updateProgress();
+      });
+    });
+  }
+
+  // Update progress on any input change
+  form.addEventListener('change', updateProgress);
+  form.addEventListener('input', updateProgress);
+  updateProgress();
+
+  // Final submit
+  document.getElementById('btnEnviar').addEventListener('click', function(){
+    document.getElementById('mensagemFinal').classList.add('ativo');
+    document.getElementById('mensagemFinal').scrollIntoView({behavior:'smooth', block:'center'});
+  });
+});
+
+</script>
+</body>
+</html>
