@@ -77,14 +77,38 @@
     background:var(--azul);
     color:#fff;
     padding:14px 18px;
-    border-radius:10px 10px 0 0;
+    border-radius:10px;
     font-size:1.15rem;
     font-weight:700;
     display:flex;
     align-items:center;
     gap:10px;
+    cursor:pointer;
+    user-select:none;
+    transition: background .15s, border-radius .15s;
+  }
+  .modulo-header:hover{
+    background:#1e4a6e;
   }
   .modulo-header .icone{font-size:1.3rem;}
+  .modulo-header .seta{
+    margin-left:auto;
+    font-size:1rem;
+    transition: transform .25s ease;
+    flex-shrink:0;
+  }
+  .modulo.aberto .modulo-header{
+    border-radius:10px 10px 0 0;
+  }
+  .modulo.aberto .modulo-header .seta{
+    transform: rotate(180deg);
+  }
+  .modulo-corpo{
+    display:none;
+  }
+  .modulo.aberto .modulo-corpo{
+    display:block;
+  }
   .modulo-intro{
     background:var(--azul-claro);
     border:1px solid var(--borda);
@@ -368,7 +392,8 @@
 <div class="container" id="formulario">
 
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 1 - Conhecendo Você e Sua Realidade (Contexto Sociodemográfico)</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 1 - Conhecendo Você e Sua Realidade (Contexto Sociodemográfico)</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 1.1</div>
   <p class="pergunta-texto">Qual é a sua idade?</p>
@@ -740,10 +765,12 @@
 <div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_9" value="opt9" data-q="p1_23"><label for="p1_23_9">Não participo de nenhum grupo ou coletivo</label></div>
 </div>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 2 – Aparelhos, Sinal e Internet na Sua Região (Infraestrutura e Acesso Digital)</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 2 – Aparelhos, Sinal e Internet na Sua Região (Infraestrutura e Acesso Digital)</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 2.1</div>
   <p class="pergunta-texto">Marque como funcionam os aparelhos que você e sua família têm em casa hoje:</p>
@@ -1079,10 +1106,12 @@ Frequentemente</span></label>
 Sempre</span></label>
 </div>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 3 – Conhecimento e Uso de Inteligência Artificial (Alfabetização e Capacidade em IA)</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 3 – Conhecimento e Uso de Inteligência Artificial (Alfabetização e Capacidade em IA)</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="modulo-intro">O quanto você concorda com as frases abaixo sobre tecnologia e Inteligência Artificial (IA)? — Tipo: Escala Likert</div>
 <div class="pergunta"><div class="likert-row">
 <div class="likert-frase">Eu sei o que significa o termo &quot;Inteligência Artificial&quot; (IA).</div>
@@ -1217,10 +1246,12 @@ Totalmente</span></label>
 <div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_4" value="opt4" data-q="p3_11"><label for="p3_11_4">Não tenho ninguém e nenhum lugar para me ajudar com isso aqui na comunidade.</label></div>
 </div>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 4 – Percepções, Confiança e Crenças sobre Inteligência Artificial</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 4 – Percepções, Confiança e Crenças sobre Inteligência Artificial</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="modulo-intro">Sobre a Inteligência Artificial (IA), marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
 <div class="pergunta"><div class="likert-row">
 <div class="likert-frase">A Inteligência Artificial pode melhorar o ensino e o aprendizado na minha escola ou comunidade.</div>
@@ -1306,10 +1337,12 @@ nem discordo</span></label>
 <label class="likert-opcao" for="p4_7_4"><input type="radio" name="p4_7" id="p4_7_4" value="opt4" data-q="p4_7"><span>Concordo
 Totalmente</span></label>
 </div></div></div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 5 – Como a tecnologia e a IA entram na sua vida (Uso e Apropriação Social)</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 5 – Como a tecnologia e a IA entram na sua vida (Uso e Apropriação Social)</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 5.1</div>
   <p class="pergunta-texto">Você já usou aparelhos digitais (como celular, computador, internet) ou ferramentas de Inteligência Artificial para alguma destas atividades abaixo? (Marque todas as opções que você já fez)</p>
@@ -1439,10 +1472,12 @@ nem discordo</span></label>
 Totalmente</span></label>
 </div></div>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 6 – Cultura, Contexto, Pertencimento e Apropriação</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 6 – Cultura, Contexto, Pertencimento e Apropriação</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="modulo-intro">Sobre a relação da tecnologia (internet e Inteligência Artificial) com a sua comunidade, marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
 <div class="pergunta"><div class="likert-row">
 <div class="likert-frase">As tecnologias, como sites, aplicativos e Inteligência Artificial, devem respeitar o modo de vida, as tradições e a cultura da minha comunidade.</div>
@@ -1613,10 +1648,12 @@ Sempre</span></label>
   <div class="pergunta-tipo">Tipo: Campo aberto de texto livre</div>
   <textarea class="campo-aberto" name="p6_13" data-q="p6_13" placeholder="Digite sua resposta aqui..."></textarea>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 7 – Justiça, Ética e Inclusão em IA</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 7 – Justiça, Ética e Inclusão em IA</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="modulo-intro">Sobre a justiça, os direitos e o acesso às tecnologias, marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
 <div class="pergunta"><div class="likert-row">
 <div class="likert-frase">Eu acredito que a Inteligência Artificial pode aumentar a desigualdade entre quem vive no centro das grandes cidades e quem mora em comunidades isoladas ou tradicionais.</div>
@@ -1739,10 +1776,12 @@ Totalmente</span></label>
 <p class="pergunta-texto">Conte para nós o que aconteceu e como você se sentiu naquele momento:</p><textarea class="campo-aberto" name="p7_10_relato" data-q="p7_10_relato" placeholder="Sua resposta (opcional)"></textarea>
 </div>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 8 – Governança e Autonomia Tecnológica</span></div>
+<div class="modulo-header"><span class="icone">🔍</span><span>Módulo 8 – Governança e Autonomia Tecnológica</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="modulo-intro">Sobre a sua participação, o controle dos seus dados e as decisões da comunidade, marque o quanto você concorda ou discorda de cada frase abaixo — Tipo: Escala Likert</div>
 <div class="pergunta"><div class="likert-row">
 <div class="likert-frase">Sinto que as pessoas da minha comunidade são realmente ouvidas (têm voz) quando novas tecnologias ou projetos de internet são trazidos para o nosso lugar.</div>
@@ -1892,16 +1931,19 @@ Totalmente</span></label>
 <div class="opcao"><input type="radio" name="p8_8" id="p8_8_5" value="opt5" data-q="p8_8"><label for="p8_8_5">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
 </div>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 <hr class="divisor">
 <div class="modulo">
-<div class="modulo-header"><span class="icone">✉️</span><span>Considerações Finais</span></div>
+<div class="modulo-header"><span class="icone">✉️</span><span>Considerações Finais</span><span class="seta">▼</span></div>
+<div class="modulo-corpo">
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta Final</div>
   <p class="pergunta-texto">Existe algo sobre tecnologia, computadores ou Inteligência Artificial que nós não perguntamos, mas que você gostaria de desabafar, sugerir ou dizer que te preocupa?</p>
   <div class="pergunta-tipo">Tipo: Campo aberto de texto livre</div>
   <textarea class="campo-aberto" name="pfinal" data-q="pfinal" placeholder="Digite sua resposta aqui..."></textarea>
 </div>
+</div><!-- /modulo-corpo -->
 </div>
 
 <div class="finalizar">
@@ -1915,6 +1957,17 @@ Totalmente</span></label>
 <script>
 
 document.addEventListener('DOMContentLoaded', function(){
+
+  // Accordion: toggle modules on header click
+  document.querySelectorAll('.modulo-header').forEach(function(header){
+    header.addEventListener('click', function(){
+      var modulo = header.closest('.modulo');
+      var aberto = modulo.classList.toggle('aberto');
+      header.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    });
+  });
+
+
   var form = document.getElementById('formulario');
   var allCountable = Array.from(form.querySelectorAll('[data-q]')).filter(function(el){
     return el.getAttribute('data-countable') !== '0';
