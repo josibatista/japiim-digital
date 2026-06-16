@@ -1,11 +1,11 @@
 # Índice Japiim de Soberania Digital: Um Estudo Multidimensional para Compreender a Inteligência Artificial em Diferentes Contextos Sociais e Territoriais Brasileiros
 
+`[comentário: revisar pronomes e abreviações]`
 # Formulário 
 ## 🔍 Módulo 1 - Conhecendo Você e Sua Realidade (Contexto Sociodemográfico)
 
 ### 1.1 Qual é a sua idade?  
 *Tipo: múltipla escolha*  
-- ( ) Menos de 12 anos
 - ( ) 12 a 14 anos
 - ( ) 15 a 17 anos
 - ( ) 18 a 24 anos
@@ -45,7 +45,7 @@
 - ( ) Favela ou comunidade urbana de periferia
 - ( ) Comunidade indígena (Por favor, digite seu povo/etnia: __________)
 - ( ) Comunidade quilombola
-- ( ) Comunidade ribeirinha / Beiradão
+- ( ) Comunidade ribeirinha / Beiradão 
 - ( ) Comunidade rural não-tradicional (sítio, fazenda ou pequeno produtor, sem ser território tradicional) `[?]`
 - ( ) Comunidade caiçara, de pescadores artesanais ou extrativistas 
 - ( ) Comunidade de migrantes ou refugiados
@@ -79,7 +79,7 @@
 - ( ) De 4 a 9 anos
 - ( ) 10 anos ou mais
 
-### 1.9 Qual é a sua história ou ligação principal com essa comunidade?
+### 1.9 Qual é a sua história ou ligação principal com essa comunidade? `[?]`
 *Tipo: múltipla escolha*
 - ( ) Nasci aqui e continuo vivendo aqui
 - ( ) Nasci aqui, fui morar fora por um tempo e depois voltei
