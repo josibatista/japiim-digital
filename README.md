@@ -1,11 +1,10 @@
 # Índice Japiim de Soberania Digital: Um Estudo Multidimensional para Compreender a Inteligência Artificial em Diferentes Contextos Sociais e Territoriais Brasileiros
 
-`[comentário: revisar pronomes e abreviações]`
-# Formulário 
 ## 🔍 Módulo 1 - Conhecendo Você e Sua Realidade (Contexto Sociodemográfico)
 
 ### 1.1 Qual é a sua idade?  
 *Tipo: múltipla escolha*  
+- ( ) Menos de 12 anos
 - ( ) 12 a 14 anos
 - ( ) 15 a 17 anos
 - ( ) 18 a 24 anos
@@ -13,6 +12,7 @@
 - ( ) 35 a 44 anos
 - ( ) 45 a 59 anos
 - ( ) 60 anos ou mais
+- ( ) Prefiro não responder
 
 ### 1.2 Qual sexo foi registrado na sua certidão de nascimento?
 *Tipo: múltipla escolha*  
@@ -42,17 +42,19 @@
 ### 1.5 Com qual tipo de comunidade, povo ou lugar você mais se identifica hoje?
 *Tipo: Múltipla escolha*
 - ( ) Cidade ou bairro urbano (fora de favelas ou periferias)
-- ( ) Favela ou comunidade urbana de periferia
-- ( ) Comunidade indígena (Por favor, digite seu povo/etnia: __________)
-- ( ) Comunidade quilombola
-- ( ) Comunidade ribeirinha / Beiradão 
-- ( ) Comunidade rural não-tradicional (sítio, fazenda ou pequeno produtor, sem ser território tradicional) `[?]`
-- ( ) Comunidade caiçara, de pescadores artesanais ou extrativistas 
-- ( ) Comunidade de migrantes ou refugiados
-- ( ) Comunidade do semiárido / sertão
-- ( ) Comunidade de terreiro / matriz africana
-- ( ) Povo Cigano
+- ( ) Favela ou comunidade urbana de periferia (Nome da comunidade: __________)
+- ( ) Comunidade indígena (Povo ou comunidade: __________)
+- ( ) Comunidade quilombola (Comunidade ou território: __________)
+- ( ) Comunidade ribeirinha / Beiradão (Nome da comunidade: __________)
+- ( ) Comunidade rural não-tradicional (sítio, fazenda ou pequeno produtor, sem ser território tradicional) `[?]` (Comunidade ou localidade: __________)
+- ( ) Comunidade caiçara, de pescadores artesanais ou extrativistas (Comunidade ou localidade: __________)
+- ( ) Comunidade de migrantes ou refugiados (Comunidade ou grupo: __________)
+- ( ) Comunidade do semiárido / sertão (Comunidade ou localidade: __________)
+- ( ) Comunidade de terreiro / matriz africana (Nome do terreiro ou comunidade: __________)
+- ( ) Povo Cigano (Povo, grupo ou comunidade: __________)
 - ( ) Outro lugar ou comunidade: _________ (Campo aberto)
+- ( ) Prefiro não responder
+
 
 ### 1.6 Onde você mora atualmente?
 *Tipo: múltipla escolha*
@@ -65,8 +67,9 @@
 - ( ) Cidade média (Entre 50 mil e 100 mil moradores)
 - ( ) Cidade pequena (Entre 20 mil e 50 mil moradores)
 - ( ) Cidade muito pequena (Menos de 20 mil moradores)
+- ( ) Prefiro não responder
 
-### 1.7 Em qual estado do fica sua comunidade ou cidade?
+### 1.7 Em qual estado fica sua comunidade ou cidade?
 *Tipo: Lista Suspensa*
 - [Lista com os 26 estados + DF]
 - ( ) Não moro no Brasil / Não se aplica
@@ -78,8 +81,9 @@
 - ( ) De 1 a 3 anos
 - ( ) De 4 a 9 anos
 - ( ) 10 anos ou mais
+- ( ) Prefiro não responder
 
-### 1.9 Qual é a sua história ou ligação principal com essa comunidade? `[?]`
+### 1.9 Qual é a sua história ou ligação principal com essa comunidade?
 *Tipo: múltipla escolha*
 - ( ) Nasci aqui e continuo vivendo aqui
 - ( ) Nasci aqui, fui morar fora por um tempo e depois voltei
@@ -87,6 +91,7 @@
 - ( ) Não nasci aqui e cheguei há pouco tempo
 - ( ) Não moro aqui, mas atuo na comunidade (como educador(a), pesquisador(a), parceiro(a) ou apoio)
 - ( ) Outra situação: _________ (Campo aberto)
+- ( ) Prefiro não responder
 
 ### 1.10 Sua comunidade te considera como líder, referência ou apoio?
 *Tipo: múltipla escolha*
@@ -106,6 +111,7 @@
 - ( ) Ensino superior incompleto (Faculdade)
 - ( ) Ensino superior completo
 - ( ) Pós-graduação (Especialização, Mestrado ou Doutorado)
+- ( ) Prefiro não responder
 
 ### 1.12 Você está estudando hoje em dia?
 *Tipo: múltipla escolha*
@@ -117,6 +123,7 @@
 - ( ) Sim, na faculdade ou universidade particular
 - ( ) Sim, em cursos da própria comunidade, movimentos sociais ou outras formações
 - ( ) Não estou estudando no momento
+- ( ) Prefiro não responder
 
 ### 1.13 O que você faz no seu dia a dia atualmente? (Você pode marcar mais de uma opção)
 *Tipo: caixa de seleção*
@@ -156,6 +163,7 @@
 *Tipo: múltipla escolha*
 - ( ) Sim
 - ( ) Não
+- ( ) Prefiro não responder
 
 <details>
 <summary> Se responder "Sim", abrir a subquestão 1.14.1:</summary>
@@ -179,7 +187,7 @@
 ### 1.15 Como você costuma falar ou se comunicar no seu dia a dia? (Marque todas as que se aplicam)
 *Tipo: Caixa de seleção*
 - [ ] Português (variedade urbana padrão)
-- [ ] Português com fala regional ou da comunidade (ex: caipira, fala ribeirinha, dialeto do semiárido)
+- [ ] Português com fala regional ou da comunidade (exemplo: caipira, fala ribeirinha, dialeto do semiárido)
 - [ ] Língua Indígena (Por favor, digite qual: ________)
 - [ ] Libras (Língua Brasileira de Sinais)
 - [ ] Outra forma: ________ (Campo aberto)
@@ -204,7 +212,7 @@
 - [ ] Procuro vídeos, explicações e tutoriais na própria internet
 - [ ] Outro apoio: ________ (Campo aberto)
 
-### 1.18 Qual destas opções melhor descreve a sua situação de trabalho hoje?
+### 1.18 Qual destas opções *melhor* descreve a sua situação de trabalho hoje?
 *Tipo: Múltipla escolha*
 - ( ) Tenho carteira assinada, sou funcionário público ou tenho vínculo formal
 - ( ) Trabalho por conta própria (sou autônomo, tenho comércio ou MEI)
@@ -259,6 +267,7 @@
 - [ ] Grupo cultural, de dança, esporte ou festa tradicional do território
 - [ ] Outro espaço: _________ (Campo aberto)
 - [ ] Não participo de nenhum grupo ou coletivo
+- [ ] Prefiro não responder
 
 ---
 
@@ -340,7 +349,7 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - ( ) Uso energia de motor (gerador a diesel) ou placa solar, então só tenho luz em algumas horas do dia.
 - ( ) Minha casa não tem energia elétrica.
 
-### 2.7 Tem algum lugar perto de onde você mora que ofereça computador com internet de graça e alguém para ajudar a mexer? (Marque todas as opções que existem e funcionam de verdade aí)
+### 2.7 Tem algum lugar perto de onde você mora que ofereça computador com internet de graça e alguém para ajudar a mexer? (Marque todas as opções que existem e funcionam de verdade)
 *Tipo: Caixa de seleção*
 - [ ] Telecentro ou Infocentro da comunidade.
 - [ ] Biblioteca Pública com computadores funcionando.
@@ -348,6 +357,7 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - [ ] Associação de moradores, sede da Aldeia ou do Quilombo.
 - [ ] Tem Lan House na região, mas precisa pagar para usar.
 - [ ] Não tem nenhum lugar assim por perto.
+- [ ] Não sei dizer.
 
 ### 2.8 Quando você tenta usar um aplicativo ou site novo, qual é a sua maior dificuldade?
 *Tipo: Caixa de seleção*
@@ -357,7 +367,7 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - [ ] Pedem e-mail e senhas complicadas de criar ou de lembrar.
 - [ ] Não acho nada que fale sobre a minha realidade ou cultura.
 
-### 2.9 Pensando no seu dia a dia, o quanto você concorda com as frases abaixo:
+### 2.9 Pensando no seu dia a dia, o quanto você concorda com as frases abaixo?
 *Tipo: Escala Likert* 
 
 #### 2.9.1 O celular ou computador que eu tenho hoje é suficiente para eu aprender coisas novas na internet.
@@ -406,29 +416,29 @@ Opções: *1 = Nunca | 2 = Raramente | 3 = Às vezes | 4 = Frequentemente | 5 = 
 
 ## 🔍 Módulo 3 – Conhecimento e Uso de Inteligência Artificial (Alfabetização e Capacidade em IA)
 
-### O quanto você concorda com as frases abaixo sobre tecnologia e Inteligência Artificial (IA)?
+### 3.1 O quanto você concorda com as frases abaixo sobre tecnologia e Inteligência Artificial (IA)?
 *Tipo: Escala Likert*
 
-#### 3.1 Eu sei o que significa o termo "Inteligência Artificial" (IA).
+#### 3.1.1 Eu sei o que significa o termo "Inteligência Artificial" (IA).
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 3.2 Eu consigo perceber quando um aplicativo, site ou tecnologia usa Inteligência Artificial.
+#### 3.1.2 Eu consigo perceber quando um aplicativo, site ou tecnologia usa Inteligência Artificial.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 3.3 Eu já usei algum aplicativo ou ferramenta de Inteligência Artificial para estudar, trabalhar, criar coisas ou resolver problemas do dia a dia.
+#### 3.1.3 Eu já usei algum aplicativo ou ferramenta de Inteligência Artificial para estudar, trabalhar, criar coisas ou resolver problemas do dia a dia.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 3.4 Eu sei como escrever uma pergunta ou comando para a Inteligência Artificial me dar a resposta certa do jeito que eu quero. 
+#### 3.1.4 Eu sei como escrever uma pergunta ou comando para a Inteligência Artificial me dar a resposta certa do jeito que eu quero. 
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 3.5 Eu me sinto capaz de aprender a mexer em um aplicativo ou ferramenta nova de IA por conta própria (sozinho/a).
+#### 3.1.5 Eu me sinto capaz de aprender a mexer em um aplicativo ou ferramenta nova de IA por conta própria (sozinho/a).
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 3.6 Eu sei avaliar se uma resposta dada pela Inteligência Artificial é verdadeira e confiável antes de usar ou compartilhar.
+#### 3.1.6 Eu sei avaliar se uma resposta dada pela Inteligência Artificial é verdadeira e confiável antes de usar ou compartilhar.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
 
-### 3.7 Quais destas tecnologias abaixo você acredita que utilizam Inteligência Artificial? (Marque todas as opções que você acha que usam)
+### 3.2 Quais destas tecnologias abaixo você acredita que utilizam Inteligência Artificial? (Marque todas as opções que você acha que usam)
 *Tipo: Caixa de seleção*
 - [ ] As sugestões de vídeos que aparecem para mim no YouTube, Instagram ou TikTok.
 - [ ] O reconhecimento do rosto (reconhecimento facial) para destravar o celular.
@@ -440,7 +450,7 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - [ ] Não sei dizer quais dessas opções usam Inteligência Artificial. `[Se marcar esta, as outras devem ser desmarcadas]`
 
 
-### 3.8 Onde você mais aprende ou ouve falar sobre Inteligência Artificial? (Escolha apenas a opção principal)
+### 3.3 Onde você **mais** aprende ou ouve falar sobre Inteligência Artificial? (Escolha apenas a opção principal)
 *Tipo: Múltipla escolha*
 - ( ) Na escola, faculdade ou em cursos que faço.
 - ( ) Conversando com amigos, vizinhos ou parentes.
@@ -450,7 +460,7 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - ( ) Nunca ouvi falar ou não procuro saber sobre esse assunto.
 
 
-### 3.9 Pense nos aplicativos de Inteligência Artificial (IA) que você já usou (como ChatGPT, Gemini, etc.). Qual é a sua realidade de acesso a eles?
+### 3.4 Pense nos aplicativos de Inteligência Artificial (IA) que você já usou (como ChatGPT, Gemini, etc.). Qual é a sua realidade de acesso a eles?
 *Tipo: Múltipla escolha*
 - ( ) Não uso nenhuma ferramenta de IA / Isso não se aplica para mim.
 - ( ) Só uso as versões gratuitas (aquelas que têm limite de perguntas, travam mais ou não têm os recursos mais novos).
@@ -458,14 +468,14 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - ( ) Tenho acesso pago e constante a ferramentas ou versões avançadas (versão Premium, com todos os recursos liberados e sem limites).
 
 
-### 3.10 Você sabe que as informações, textos, fotos ou áudios que você envia ao conversar com uma IA podem ser guardados por ela para "aprender" e ser treinada?
+### 3.5 Você sabe que as informações, textos, fotos ou áudios que você envia ao conversar com uma IA podem ser guardados por ela para "aprender" e ser treinada?
 *Tipo: Múltipla escolha*
 - ( ) Sim, eu já sabia disso com clareza.
 - ( ) Já tinha ouvido falar por alto, mas não sei bem como funciona.
 - ( ) Não, eu não fazia ideia disso.
 
 
-### 3.11 Quando você não entende como um aplicativo de IA funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)
+### 3.6 Quando você não entende como um aplicativo de IA funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)
 *Tipo: Caixa de seleção*
 - [ ] Sim, peço ajuda para amigos, parentes ou vizinhos daqui.
 - [ ] Sim, procuro lideranças da comunidade.
@@ -481,28 +491,28 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 
 ## 🔍 Módulo 4 – Percepções, Confiança e Crenças sobre Inteligência Artificial 
 
-**Sobre a Inteligência Artificial (IA), marque o quanto você concorda ou discorda de cada frase abaixo:**
+### 4.1 Sobre a Inteligência Artificial (IA), o quanto você concorda com as frases abaixo?
 *Tipo: Escala Likert*
 
-### 4.1 A Inteligência Artificial pode melhorar o ensino e o aprendizado na minha escola ou comunidade.
+### 4.1.1 A Inteligência Artificial pode melhorar o ensino e o aprendizado na minha escola ou comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 4.2 A Inteligência Artificial pode ajudar professores(as) e estudantes, sem tirar o lugar e o valor do trabalho humano de quem ensina.
+### 4.1.2 A Inteligência Artificial pode ajudar professores(as) e estudantes, sem tirar o lugar e o valor do trabalho humano de quem ensina.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 4.3 A Inteligência Artificial pode espalhar informações falsas, erradas (como *fake news*), ou explicações incompletas.
+### 4.1.3 A Inteligência Artificial pode espalhar informações falsas, erradas (como *fake news*), ou explicações incompletas.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 4.4 Eu me sinto seguro(a) e à vontade para enviar meus dados, minhas fotos ou as histórias da minha vida para uma Inteligência Artificial.
+### 4.1.4 Eu me sinto seguro(a) e à vontade para enviar meus dados, minhas fotos ou as histórias da minha vida para uma Inteligência Artificial.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 4.5 Eu sinto que as ferramentas de IA foram feitas pensando em pessoas que vivem em realidades e lugares muito diferentes do meu.
+### 4.1.5 Eu sinto que as ferramentas de IA foram feitas pensando em pessoas que vivem em realidades e lugares muito diferentes do meu.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 4.6 Eu me sentiria mais seguro(a) para usar a Inteligência Artificial se recebesse uma explicação, curso ou treinamento adequado sobre ela.
+### 4.1.6 Eu me sentiria mais seguro(a) para usar a Inteligência Artificial se recebesse uma explicação, curso ou treinamento adequado sobre ela.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 4.7 Eu acredito que as grandes empresas que criam as Inteligências Artificiais estão realmente preocupadas em ajudar e melhorar a vida da minha comunidade.
+### 4.1.7 Eu acredito que as grandes empresas que criam as Inteligências Artificiais estão realmente preocupadas em ajudar e melhorar a vida da minha comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
 
@@ -523,17 +533,17 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - [ ] Buscar informações sobre saúde, remédios, vagas de emprego, benefícios sociais, documentos ou serviços do governo.
 - [ ] Criar um projeto, uma ideia ou uma solução para melhorar as coisas na minha escola ou comunidade.
 - [ ] Cuidar e proteger nosso território (ex: monitorar o clima, mapear desmatamento, demarcar terras ou proteção ambiental).
-- [ ] Nunca usei celular, internet ou IA para nenhuma dessas finalidades.
+- [ ] Nunca usei celular, internet ou IA para nenhuma dessas coisas.
 
-#### 5.1.1 Se você já usou alguma Inteligência Artificial (como ChatGPT, aplicativos de criar imagens ou áudios) no seu dia a dia, fora das aulas: conte o que você pediu para a IA fazer e como foi o resultado.
-*Tipo: Campo aberto de texto (Opcional)*
-- ( ) Sim, já usei fora da escola. (Espaço para contar como foi): __________________________________________________
-- ( ) Não, nunca usei IA fora da escola.
-
-#### 5.1.2 E para estudar ou trabalhar (seja na escola, faculdade ou por conta própria): você já pediu ajuda para alguma Inteligência Artificial em alguma tarefa? Conte como foi.
+#### 5.1.1 Você já usou Inteligência Artificial para estudar ou trabalhar (seja na escola, faculdade ou por conta própria)? Conte como foi.
 *Tipo: Campo aberto de texto (Opcional)*
 - ( ) Sim, já usei para estudar/trabalhar. (Espaço para contar como foi): __________________________________________________
 - ( ) Não, nunca usei IA para estudar ou trabalhar.
+
+#### 5.1.2 E se você já usou alguma Inteligência Artificial (IA) no seu dia a dia, fora da escola/trabalho: conte o que você pediu para a IA fazer e como foi o resultado.
+*Tipo: Campo aberto de texto (Opcional)*
+- ( ) Sim, já usei fora da escola. (Espaço para contar como foi): __________________________________________________
+- ( ) Não, nunca usei IA fora da escola.
 
 
 ### 5.2 Você já participou de algum projeto, curso, oficina ou atividade coletiva sobre tecnologias (como oficinas de vídeo, robótica, cursos de informática ou grupos de conversa sobre IA)?
@@ -599,7 +609,10 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - ( ) Não fiz e não tenho interesse em fazer.
 
 
-### 5.8 Eu acredito que, se a nossa comunidade souber usar a Inteligência Artificial do nosso jeito, ela pode ser uma ferramenta poderosa para defendermos nossos direitos e nosso território.
+### 5.8 Sobre o uso da Inteligência Artificial (IA) na sua comunidade, o quanto você concorda com essa frase?
+*Tipo: Escala Likert*
+
+#### 5.8.1 Eu acredito que, se a nossa comunidade souber usar a Inteligência Artificial do nosso jeito, ela pode ser uma ferramenta poderosa para defendermos nossos direitos e nosso território.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
 ---
@@ -609,41 +622,42 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 
 ## 🔍 Módulo 6 – Cultura, Contexto, Pertencimento e Apropriação
 
-### Sobre a relação da tecnologia (internet e Inteligência Artificial) com a sua comunidade, marque o quanto você concorda ou discorda de cada frase abaixo:
+### 6.1 Sobre a relação da tecnologia (internet e Inteligência Artificial) com a sua comunidade,  o quanto você concorda com as frases abaixo?
 *Tipo: Escala Likert*
 
-#### 6.1 As tecnologias, como sites, aplicativos e Inteligência Artificial, devem respeitar o modo de vida, as tradições e a cultura da minha comunidade.
+#### 6.1.1 As tecnologias (como sites, aplicativos e Inteligência Artificial) devem respeitar o modo de vida, as tradições e a cultura da minha comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 6.2 Eu tenho medo de que o uso da Inteligência Artificial faça as pessoas da minha comunidade esquecerem ou darem menos valor às nossas tradições e raízes.
+#### 6.1.2 Eu tenho medo de que o uso da Inteligência Artificial faça as pessoas da minha comunidade esquecerem ou darem menos valor às nossas tradições e raízes.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 6.3 No meu dia a dia, sinto que as coisas que vejo na internet ou na IA (como vídeos, textos e imagens) realmente mostram a nossa cultura e o jeito de viver do meu povo.
+#### 6.1.3 A Inteligência Artificial pode ser ajustada (adaptada) para ajudar a guardar, proteger e fortalecer a história, a memória, a língua ou os saberes da minha comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 6.4 A Inteligência Artificial pode ser ajustada (adaptada) para ajudar a guardar, proteger e fortalecer a história, a memória, a língua ou os saberes da minha comunidade.
+#### 6.1.4 No meu dia a dia, sinto que as coisas que vejo na internet ou na IA (como vídeos, textos e imagens) realmente mostram a nossa cultura e o jeito de viver do meu povo.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 6.5 As imagens e textos que a Inteligência Artificial cria sobre comunidades parecidas com a minha são muito diferentes do que a gente vive na realidade.
+#### 6.1.5 As imagens e textos que a Inteligência Artificial cria sobre comunidades parecidas com a minha são muito diferentes do que a gente vive na realidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 6.6 Sinto que as ferramentas de IA só mostram a minha comunidade pelos problemas (como pobreza, falta de recursos ou violência), em vez de mostrar o nosso valor e nossas qualidades.
+#### 6.1.6 Sinto que as ferramentas de IA só mostram a minha comunidade pelos problemas (como pobreza, falta de recursos ou violência), em vez de mostrar o nosso valor e nossas qualidades.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 6.7 O conhecimento tradicional e a sabedoria local da minha comunidade devem ser valorizados e respeitados na hora de criar ou usar tecnologias e IA.
+#### 6.1.7 O conhecimento tradicional e a sabedoria local da minha comunidade devem ser valorizados e respeitados na hora de criar ou usar tecnologias e IA.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 6.8 A minha comunidade deveria poder corrigir ou reclmar (contestar) quando uma IA representa nosso povo, território, cultura ou modo de falar de forma errada.
+#### 6.1.8 A minha comunidade deveria poder corrigir ou reclamar (contestar) quando uma IA representa nosso povo, território, cultura ou modo de falar de forma errada.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 6.9 As histórias, imagens, cantos, palavras, tradições ou conhecimentos da minha comunidade só devem ser usados por tecnologias ou IA com autorização e respeito.
+#### 6.1.9 As histórias, imagens, cantos, palavras, tradições ou conhecimentos da minha comunidade só devem ser usados por tecnologias ou IA com autorização e respeito.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 6.10 Quando você usa uma Inteligência Artificial para criar alguma coisa (como um texto ou uma imagem), sente que precisa "fingir ser outra pessoa" ou usar palavras difíceis que não são do seu dia a dia para a máquina conseguir te entender?
+
+### 6.2 Quando você usa uma Inteligência Artificial para criar alguma coisa (como um texto ou uma imagem), sente que precisa "fingir ser outra pessoa" ou usar palavras difíceis que não são do seu dia a dia para a máquina conseguir te entender?
 *Tipo: Escala de frequência* 
 Opções: *1 = Nunca | 2 = Raramente | 3 = Às vezes | 4 = Frequentemente | 5 = Sempre.*
 
-### 6.11 O que mais faz você sentir que as tecnologias atuais (internet ou IA) NÃO combinam ou NÃO pertencem à realidade do seu lugar? (Você pode marcar mais de uma opção)
+### 6.3 O que mais faz você sentir que as tecnologias atuais (internet ou IA) NÃO combinam ou NÃO pertencem à realidade do seu lugar? (Você pode marcar mais de uma opção)
 *Tipo: Caixa de Seleção*
 - [ ] As pessoas que aparecem nas imagens e vídeos são muito diferentes de mim e dos meus vizinhos.
 - [ ] O jeito de falar das ferramentas é muito formal, artificial ou usa termos que ninguém usa por aqui.
@@ -656,14 +670,14 @@ Opções: *1 = Nunca | 2 = Raramente | 3 = Às vezes | 4 = Frequentemente | 5 = 
 - [ ] Não sinto essa distância; acho que a tecnologia combina totalmente comigo e com o meu lugar.
 - [ ] Outro: ______________________
 
-### 6.12 Você acredita que seria possível construirmos uma Inteligência Artificial que falasse e entendesse perfeitamente a língua ou o jeito de falar próprio da sua comunidade (ex: o dialeto da comunidade, o falar beiradão, o falar quilombola, ou uma língua indígena)?
+### 6.4 Você acredita que seria possível construirmos uma Inteligência Artificial que falasse e entendesse perfeitamente a língua ou o jeito de falar próprio da sua comunidade (ex: o dialeto da comunidade, o falar beiradão, o falar quilombola, uma língua indígena etc.)?
 *Tipo: Múltipla escolha*
 - ( ) Sim, acredito totalmente que isso é possível de ser feito.
 - ( ) Sim, mas acho que seria muito difícil de conseguir fazer.
 - ( ) Não, não acho que isso seja possível.
 - ( ) Não sei dizer ou não tenho certeza.
 
-### 6.13 Se uma Inteligência Artificial pudesse contar a história e a cultura da sua comunidade para o resto do mundo, qual parta da sua cultura ou realidade do seu povo, você não gostaria que ela esquecesse ou contasse de forma errada?
+### 6.5 Se uma Inteligência Artificial pudesse contar a história e a cultura da sua comunidade para o resto do mundo, qual parta da sua cultura ou realidade do seu povo, você NÃO gostaria que ela esquecesse ou contasse de forma errada?
 *Tipo: Campo aberto de texto*
 
 
@@ -673,34 +687,34 @@ Opções: *1 = Nunca | 2 = Raramente | 3 = Às vezes | 4 = Frequentemente | 5 = 
 
 ## 🔍 Módulo 7 – Justiça, Ética e Inclusão em IA
 
-### Sobre a justiça, os direitos e o acesso às tecnologias, marque o quanto você concorda ou discorda de cada frase abaixo:
+### 7.1 Sobre a justiça, os direitos e o acesso às tecnologias, o quanto você concorda com as frases abaixo?
 *Tipo: Escala Likert*
 
-#### 7.1 Eu acredito que a Inteligência Artificial pode aumentar a desigualdade entre quem vive no centro das grandes cidades e quem mora em comunidades isoladas ou tradicionais.
+#### 7.1.1 Eu acredito que a Inteligência Artificial pode aumentar a desigualdade entre quem vive no centro das grandes cidades e quem mora em comunidades isoladas ou tradicionais.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.2 É muito importante que as escolas, cursos e projetos ensinem sobre ética (o que é certo, seguro e respeitoso) na hora de usar as tecnologias e a IA.
+#### 7.1.2 É muito importante que as escolas, cursos e projetos ensinem sobre ética (o que é certo, seguro e respeitoso) na hora de usar as tecnologias e a IA.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.3 O acesso à internet de qualidade e às ferramentas de Inteligência Artificial deveria ser um direito garantido para todas as pessoas.
+#### 7.1.3 O acesso à internet de qualidade e às ferramentas de Inteligência Artificial deveria ser um direito garantido para todas as pessoas.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.4 Apenas dar acesso à tecnologia não basta: se a IA não respeitar os nossos saberes locais e tradições, ela pode se tornar uma nova forma de apagar a cultura da minha comunidade.
+#### 7.1.4 Apenas dar acesso à tecnologia não basta: se a IA não respeitar os nossos saberes locais e tradições, ela pode se tornar uma nova forma de apagar a cultura da minha comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.5 Eu me preocupo ou tenho medo de que a Inteligência Artificial seja usada por governos, empresas ou pessoas de fora para vigiar, rastrear ou controlar a vida dos moradores da minha comunidade.
+#### 7.1.5 Eu me preocupo ou tenho medo de que a Inteligência Artificial seja usada por governos, empresas ou pessoas de fora para vigiar, rastrear ou controlar a vida dos moradores da minha comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.6 Para que a IA seja inclusiva de verdade, ela deveria ser criada com a participação de trabalhadores, técnicos e pesquisadores que venham de periferias e povos tradicionais, e não apenas por grandes empresas de fora.
+#### 7.1.6 Para que a IA seja inclusiva de verdade, ela deveria ser criada com a participação de trabalhadores, técnicos e pesquisadores que venham de periferias e povos tradicionais, e não apenas por grandes empresas de fora.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.7 Deveria existir uma lei ou regra rígida que obrigue as grandes empresas de tecnologia a assumirem a responsabilidade e pagarem por qualquer erro, preconceito ou dano que suas IAs causem ao nosso povo.
+#### 7.1.7 Deveria existir uma lei ou regra rígida que obrigue as grandes empresas de tecnologia a assumirem a responsabilidade e pagarem por qualquer erro, preconceito ou dano que suas IAs causem ao nosso povo.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 7.8 As empresas de tecnologia deveriam prestar contas e se preocupar com o impacto que o funcionamento da IA causa na natureza, nas florestas, nos rios e no clima.
+#### 7.1.8 As empresas de tecnologia deveriam prestar contas e se preocupar com o impacto que o funcionamento da IA causa na natureza, nas florestas, nos rios e no clima.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 7.9 Para você, quem deveria ser o principal responsável por ensinar as pessoas a usarem a Inteligência Artificial de forma ética, segura e responsável?
+### 7.2 Para você, quem deveria ser o principal responsável por ensinar as pessoas a usarem a Inteligência Artificial de forma ética, segura e responsável?
 *Tipo: Múltipla Escolha*
 - ( ) As escolas e os professores no dia a dia.
 - ( ) As grandes empresas que criam a tecnologia (como Google, Microsoft, OpenAI).
@@ -709,15 +723,16 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - ( ) Outro: ______________________
 - ( ) Ninguém precisa ensinar; cada pessoa aprende e descobre sozinha.
 
-### 7.10 Você já passou pela experiência de se sentir excluído(a), confuso(a) ou deixado(a) de lado ao tentar usar a internet ou alguma ferramenta de Inteligência Artificial?
+### 7.3 Você já passou pela experiência de se sentir excluído(a), confuso(a) ou deixado(a) de lado ao tentar usar a internet ou alguma ferramenta de Inteligência Artificial?
 *Tipo: Múltipla Escolha (Condicional)*
 - ( ) Sim
 - ( ) Não
+- ( ) Não me lembro
 
 <details>
-<summary> Se você respondeu “Sim”:</summary>
+<summary> Se respondeu “Sim”:</summary>
 
-> **Conte para nós o que aconteceu e como você se sentiu naquele momento:**
+> **Se quiser, conte para nós o que aconteceu e como você se sentiu naquele momento:**
 > *Tipo: Campo aberto de texto (Opcional)*
 
 </details>
@@ -728,18 +743,18 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 
 ## 🔍 Módulo 8 – Governança e Autonomia Tecnológica
 
-### Sobre a sua participação, o controle dos seus dados e as decisões da comunidade, marque o quanto você concorda ou discorda de cada frase abaixo:
+### 8.1 Sobre a sua participação, o controle dos seus dados e as decisões da comunidade, o quanto você concorda com as frases abaixo?
 *Tipo: Escala Likert*
 
-#### 8.1 Sinto que as pessoas da minha comunidade são realmente ouvidas (têm voz) quando novas tecnologias ou projetos de internet são trazidos para o nosso lugar.
+#### 8.1.1 Sinto que as pessoas da minha comunidade são realmente ouvidas (têm voz) quando novas tecnologias ou projetos de internet são trazidos para o nosso lugar.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
 <details>
-<summary> De acordo com a resposta anterior</summary>
+<summary> De acordo com a resposta anterior (se for "discordo totalmente, discordo ou nem concordo nem discordo)</summary>
 
-> **8.1.1 Se houvesse um espaço, conselho ou reunião para a sua comunidade decidir junto sobre as tecnologias que chegam até vocês, qual seria o seu interesse em fazer parte disso?**
+> **8.1.1.1 Se houvesse um espaço, conselho ou reunião para a sua comunidade decidir junto sobre as tecnologias que chegam até vocês, qual seria o seu interesse em fazer parte disso?**
 > 
-> *Tipo: Múltipla escolha*
+> *Tipo: Múltipla escolha (opcional)*
 > - ( ) Muito interessado(a): Gostaria de participar ativamente das reuniões e ajudar a ensinar os técnicos e cientistas sobre a realidade do nosso lugar.
 > - ( ) Interessado(a): Gostaria de ser informado(a) com clareza e dar minha opinião antes de qualquer decisão ser tomada pelas autoridades.
 > - ( ) Pouco interessado(a): Prefiro que apenas as nossas lideranças e representantes participem e depois nos contem o que ficou decidido.
@@ -747,22 +762,22 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 
 </details>
 
-#### 8.2 As escolas, a prefeitura ou as associações dão o treinamento e o apoio prático que eu preciso para conseguir usar a Inteligência Artificial de um jeito seguro no meu dia a dia.
+#### 8.1.2 As escolas, a prefeitura ou as associações dão o treinamento e o apoio prático que eu preciso para conseguir usar a Inteligência Artificial de um jeito seguro no meu dia a dia.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 8.3 Sinto que minha comunidade tem liberdade para usar as tecnologias do nosso próprio jeito, respeitando nossas regras e tradições locais.
+#### 8.1.3 Sinto que minha comunidade tem liberdade para usar as tecnologias do nosso próprio jeito, respeitando nossas regras e tradições locais.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 8.4 Eu confio nos grupos e instituições de fora (como governo, empresas de tecnologia ou ONGs) que trazem novas ferramentas e internet para dentro da minha comunidade.
+#### 8.1.4 Eu confio nos grupos e instituições de fora (como governo, empresas de tecnologia ou ONGs) que trazem novas ferramentas e internet para dentro da minha comunidade.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 8.5 Acredito que as histórias, fotos, áudios e informações que a IA recolhe sobre a nossa comunidade deveriam ficar protegidos e guardados com a gente, e não pertencer apenas às grandes empresas.
+#### 8.1.5 Acredito que as histórias, fotos, áudios e informações que a IA recolhe sobre a nossa comunidade deveriam ficar protegidos e guardados com a gente, e não pertencer apenas às grandes empresas.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-#### 8.6 Se a nossa comunidade se reunir e decidir que NÃO quer usar uma determinada ferramenta de Inteligência Artificial, o governo e as empresas devem respeitar a nossa vontade e ficar de fora.
+#### 8.1.6 Se a nossa comunidade se reunir e decidir que NÃO quer usar uma determinada ferramenta de Inteligência Artificial, o governo e as empresas devem respeitar a nossa vontade e ficar de fora.
 Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo | Concordo Totalmente*
 
-### 8.7 Pensando na proteção dos seus dados (suas informações pessoais e da sua comunidade), quanto você confia em cada um destes grupos para decidir sobre o uso de IA na sua região?
+### 8.2 Pensando na proteção dos seus dados (suas informações pessoais e da sua comunidade), quanto você confia em cada um destes grupos para decidir sobre o uso de IA na sua região?
 *Tipo: Matriz Likert de Confiança*
 
 - **Grandes empresas de tecnologia (como Google, Facebook, WhatsApp, OpenAI):**  
@@ -781,7 +796,7 @@ Opções: *Não confio nada | Confio pouco | Confio muito | Confio totalmente*
 Opções: *Não confio nada | Confio pouco | Confio muito | Confio totalmente*
 
 
-### 8.8 Se uma nova tecnologia ou projeto de Inteligência Artificial fosse chegar à sua comunidade hoje, como você gostaria que fosse decidida a entrada dele?
+### 8.3 Se uma nova tecnologia ou projeto de Inteligência Artificial fosse chegar à sua comunidade hoje, como você gostaria que fosse decidida a entrada dele?
 *Tipo: Múltipla escolha*
 - ( ) Os líderes ou associações deveriam ser consultados primeiro.
 - ( ) Deveria haver uma assembleia ou reunião aberta com votação para todos os moradores decidirem juntos.
@@ -794,4 +809,4 @@ Opções: *Não confio nada | Confio pouco | Confio muito | Confio totalmente*
 ## Final
 
 ### Existe algo sobre tecnologia, computadores ou Inteligência Artificial que nós não perguntamos, mas que você gostaria de desabafar, sugerir ou dizer que te preocupa?
-*Tipo: Campo aberto de texto livre*
+*Tipo: Campo aberto de texto livre (Opcional)*
