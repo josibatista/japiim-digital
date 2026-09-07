@@ -399,6 +399,7 @@
   <p class="pergunta-texto">Qual é a sua idade?</p>
   <div class="pergunta-tipo">Tipo: múltipla escolha</div>
   <div class="opcoes">
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_0" value="opt0" data-q="p1_1"><label for="p1_1_0">Menos de 12 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_1" id="p1_1_1" value="opt1" data-q="p1_1"><label for="p1_1_1">12 a 14 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_1" id="p1_1_2" value="opt2" data-q="p1_1"><label for="p1_1_2">15 a 17 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_1" id="p1_1_3" value="opt3" data-q="p1_1"><label for="p1_1_3">18 a 24 anos</label></div>
@@ -406,6 +407,7 @@
 <div class="opcao"><input type="radio" name="p1_1" id="p1_1_5" value="opt5" data-q="p1_1"><label for="p1_1_5">35 a 44 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_1" id="p1_1_6" value="opt6" data-q="p1_1"><label for="p1_1_6">45 a 59 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_1" id="p1_1_7" value="opt7" data-q="p1_1"><label for="p1_1_7">60 anos ou mais</label></div>
+<div class="opcao"><input type="radio" name="p1_1" id="p1_1_8" value="opt8" data-q="p1_1"><label for="p1_1_8">Prefiro não responder</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -451,21 +453,18 @@
   <div class="pergunta-tipo">Tipo: Múltipla escolha</div>
   <div class="opcoes">
 <div class="opcao"><input type="radio" name="p1_5" id="p1_5_0" value="opt0" data-q="p1_5"><label for="p1_5_0">Cidade ou bairro urbano (fora de favelas ou periferias)</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_1" value="opt1" data-q="p1_5"><label for="p1_5_1">Favela ou comunidade urbana de periferia</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_2" value="opt2" data-q="p1_5"><label for="p1_5_2">Comunidade indígena</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_3" value="opt3" data-q="p1_5"><label for="p1_5_3">Comunidade quilombola</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_4" value="opt4" data-q="p1_5"><label for="p1_5_4">Comunidade ribeirinha / Beiradão</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_5" value="opt5" data-q="p1_5"><label for="p1_5_5">Comunidade rural não-tradicional (sítio, fazenda ou pequeno produtor, sem ser território tradicional)</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_6" value="opt6" data-q="p1_5"><label for="p1_5_6">Comunidade caiçara, de pescadores artesanais ou extrativistas</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_7" value="opt7" data-q="p1_5"><label for="p1_5_7">Comunidade de migrantes ou refugiados</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_8" value="opt8" data-q="p1_5"><label for="p1_5_8">Comunidade do semiárido / sertão</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_9" value="opt9" data-q="p1_5"><label for="p1_5_9">Comunidade de terreiro / matriz africana</label></div>
-<div class="opcao"><input type="radio" name="p1_5" id="p1_5_10" value="opt10" data-q="p1_5"><label for="p1_5_10">Povo Cigano</label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_1" value="opt1" data-q="p1_5"><label for="p1_5_1">Favela ou comunidade urbana de periferia<input type="text" class="campo-aberto" placeholder="Nome da comunidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_2" value="opt2" data-q="p1_5"><label for="p1_5_2">Comunidade indígena<input type="text" class="campo-aberto" placeholder="Povo ou comunidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_3" value="opt3" data-q="p1_5"><label for="p1_5_3">Comunidade quilombola<input type="text" class="campo-aberto" placeholder="Comunidade ou território" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_4" value="opt4" data-q="p1_5"><label for="p1_5_4">Comunidade ribeirinha / Beiradão<input type="text" class="campo-aberto" placeholder="Nome da comunidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_5" value="opt5" data-q="p1_5"><label for="p1_5_5">Comunidade rural não-tradicional (sítio, fazenda ou pequeno produtor, sem ser território tradicional)<input type="text" class="campo-aberto" placeholder="Comunidade ou localidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_6" value="opt6" data-q="p1_5"><label for="p1_5_6">Comunidade caiçara, de pescadores artesanais ou extrativistas<input type="text" class="campo-aberto" placeholder="Comunidade ou localidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_7" value="opt7" data-q="p1_5"><label for="p1_5_7">Comunidade de migrantes ou refugiados<input type="text" class="campo-aberto" placeholder="Comunidade ou grupo" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_8" value="opt8" data-q="p1_5"><label for="p1_5_8">Comunidade do semiárido / sertão<input type="text" class="campo-aberto" placeholder="Comunidade ou localidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_9" value="opt9" data-q="p1_5"><label for="p1_5_9">Comunidade de terreiro / matriz africana<input type="text" class="campo-aberto" placeholder="Nome do terreiro ou comunidade" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_10" value="opt10" data-q="p1_5"><label for="p1_5_10">Povo Cigano<input type="text" class="campo-aberto" placeholder="Povo, grupo ou comunidade" data-countable="0"></label></div>
 <div class="opcao"><input type="radio" name="p1_5" id="p1_5_11" value="opt11" data-q="p1_5"><label for="p1_5_11">Outro lugar ou comunidade<input type="text" class="campo-aberto" placeholder="Especifique (campo aberto)" data-countable="0"></label></div>
-</div><div class="sub-bloco" data-show-if="p1_5_opt2">
-<div class="nota">Se marcou &#x27;Comunidade indígena&#x27;, informe seu povo/etnia:</div>
-<p class="pergunta-texto" style="font-size:0.92rem;">Por favor, digite seu povo/etnia:</p><textarea class="campo-aberto" name="p1_5_etnia" data-q="p1_5_etnia" placeholder="Seu povo/etnia"></textarea>
-</div>
+<div class="opcao"><input type="radio" name="p1_5" id="p1_5_12" value="opt12" data-q="p1_5"><label for="p1_5_12">Prefiro não responder</label></div>
 </div>
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 1.6</div>
@@ -481,6 +480,7 @@
 <div class="opcao"><input type="radio" name="p1_6" id="p1_6_6" value="opt6" data-q="p1_6"><label for="p1_6_6">Cidade média (Entre 50 mil e 100 mil moradores)</label></div>
 <div class="opcao"><input type="radio" name="p1_6" id="p1_6_7" value="opt7" data-q="p1_6"><label for="p1_6_7">Cidade pequena (Entre 20 mil e 50 mil moradores)</label></div>
 <div class="opcao"><input type="radio" name="p1_6" id="p1_6_8" value="opt8" data-q="p1_6"><label for="p1_6_8">Cidade muito pequena (Menos de 20 mil moradores)</label></div>
+<div class="opcao"><input type="radio" name="p1_6" id="p1_6_9" value="opt9" data-q="p1_6"><label for="p1_6_9">Prefiro não responder</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -529,6 +529,7 @@
 <div class="opcao"><input type="radio" name="p1_8" id="p1_8_2" value="opt2" data-q="p1_8"><label for="p1_8_2">De 1 a 3 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_8" id="p1_8_3" value="opt3" data-q="p1_8"><label for="p1_8_3">De 4 a 9 anos</label></div>
 <div class="opcao"><input type="radio" name="p1_8" id="p1_8_4" value="opt4" data-q="p1_8"><label for="p1_8_4">10 anos ou mais</label></div>
+<div class="opcao"><input type="radio" name="p1_8" id="p1_8_5" value="opt5" data-q="p1_8"><label for="p1_8_5">Prefiro não responder</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -542,6 +543,7 @@
 <div class="opcao"><input type="radio" name="p1_9" id="p1_9_3" value="opt3" data-q="p1_9"><label for="p1_9_3">Não nasci aqui e cheguei há pouco tempo</label></div>
 <div class="opcao"><input type="radio" name="p1_9" id="p1_9_4" value="opt4" data-q="p1_9"><label for="p1_9_4">Não moro aqui, mas atuo na comunidade (como educador(a), pesquisador(a), parceiro(a) ou apoio)</label></div>
 <div class="opcao"><input type="radio" name="p1_9" id="p1_9_5" value="opt5" data-q="p1_9"><label for="p1_9_5">Outra situação<input type="text" class="campo-aberto" placeholder="Especifique (campo aberto)" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p1_9" id="p1_9_6" value="opt6" data-q="p1_9"><label for="p1_9_6">Prefiro não responder</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -569,6 +571,7 @@
 <div class="opcao"><input type="radio" name="p1_11" id="p1_11_6" value="opt6" data-q="p1_11"><label for="p1_11_6">Ensino superior incompleto (Faculdade)</label></div>
 <div class="opcao"><input type="radio" name="p1_11" id="p1_11_7" value="opt7" data-q="p1_11"><label for="p1_11_7">Ensino superior completo</label></div>
 <div class="opcao"><input type="radio" name="p1_11" id="p1_11_8" value="opt8" data-q="p1_11"><label for="p1_11_8">Pós-graduação (Especialização, Mestrado ou Doutorado)</label></div>
+<div class="opcao"><input type="radio" name="p1_11" id="p1_11_9" value="opt9" data-q="p1_11"><label for="p1_11_9">Prefiro não responder</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -584,6 +587,7 @@
 <div class="opcao"><input type="radio" name="p1_12" id="p1_12_5" value="opt5" data-q="p1_12"><label for="p1_12_5">Sim, na faculdade ou universidade particular</label></div>
 <div class="opcao"><input type="radio" name="p1_12" id="p1_12_6" value="opt6" data-q="p1_12"><label for="p1_12_6">Sim, em cursos da própria comunidade, movimentos sociais ou outras formações</label></div>
 <div class="opcao"><input type="radio" name="p1_12" id="p1_12_7" value="opt7" data-q="p1_12"><label for="p1_12_7">Não estou estudando no momento</label></div>
+<div class="opcao"><input type="radio" name="p1_12" id="p1_12_8" value="opt8" data-q="p1_12"><label for="p1_12_8">Prefiro não responder</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -627,6 +631,7 @@
   <div class="opcoes">
 <div class="opcao"><input type="radio" name="p1_14" id="p1_14_0" value="opt0" data-q="p1_14"><label for="p1_14_0">Sim</label></div>
 <div class="opcao"><input type="radio" name="p1_14" id="p1_14_1" value="opt1" data-q="p1_14"><label for="p1_14_1">Não</label></div>
+<div class="opcao"><input type="radio" name="p1_14" id="p1_14_2" value="opt2" data-q="p1_14"><label for="p1_14_2">Prefiro não responder</label></div>
 </div><div class="sub-bloco" data-show-if="p1_14_opt0">
 <div class="nota">Se respondeu &#x27;Sim&#x27;, responda também:</div>
 <p class="pergunta-texto">1.14.1 Quais foram as maiores dificuldades que fizeram você parar de estudar? (Marque todas as que se aplicam)</p><div class="opcoes">
@@ -762,6 +767,7 @@
 <div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_7" value="opt7" data-q="p1_23"><label for="p1_23_7">Grupo cultural, de dança, esporte ou festa tradicional do território</label></div>
 <div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_8" value="opt8" data-q="p1_23"><label for="p1_23_8">Outro espaço<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
 <div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_9" value="opt9" data-q="p1_23"><label for="p1_23_9">Não participo de nenhum grupo ou coletivo</label></div>
+<div class="opcao"><input type="checkbox" name="p1_23" id="p1_23_10" value="opt10" data-q="p1_23"><label for="p1_23_10">Prefiro não responder</label></div>
 </div>
 </div>
 </div><!-- /modulo-corpo -->
@@ -972,6 +978,7 @@ Totalmente</span></label>
 <div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_3" value="opt3" data-q="p2_7"><label for="p2_7_3">Associação de moradores, sede da Aldeia ou do Quilombo.</label></div>
 <div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_4" value="opt4" data-q="p2_7"><label for="p2_7_4">Tem Lan House na região, mas precisa pagar para usar.</label></div>
 <div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_5" value="opt5" data-q="p2_7"><label for="p2_7_5">Não tem nenhum lugar assim por perto.</label></div>
+<div class="opcao"><input type="checkbox" name="p2_7" id="p2_7_6" value="opt6" data-q="p2_7"><label for="p2_7_6">Não sei dizer.</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -1235,7 +1242,7 @@ Totalmente</span></label>
 </div>
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 3.11</div>
-  <p class="pergunta-texto">Quando você não entende como um aplicativo de IA funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)</p>
+  <p class="pergunta-texto">Quando você não entende como um aplicativo funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)</p>
   <div class="pergunta-tipo">Tipo: Caixa de seleção</div>
   <div class="opcoes">
 <div class="opcao"><input type="checkbox" name="p3_11" id="p3_11_0" value="opt0" data-q="p3_11"><label for="p3_11_0">Sim, peço ajuda para amigos, parentes ou vizinhos daqui.</label></div>
@@ -1355,25 +1362,27 @@ Totalmente</span></label>
 <div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_5" value="opt5" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_5">Criar textos, fotos, vídeos, cartazes ou postagens para mostrar a realidade do meu lugar para quem é de fora.</label></div>
 <div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_6" value="opt6" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_6">Denunciar, registrar ou cobrar solução para um problema ou injustiça que minha comunidade está sofrendo.</label></div>
 <div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_7" value="opt7" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_7">Buscar informações sobre saúde, remédios, vagas de emprego, benefícios sociais, documentos ou serviços do governo.</label></div>
-<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_8" value="opt8" data-q="p5_1" data-exclusive="1" data-exclusive-group="p5_1"><label for="p5_1_8">Nunca usei celular, internet ou IA para nenhuma dessas finalidades.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_8" value="opt8" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_8">Criar um projeto, uma ideia ou uma solução para melhorar as coisas na minha escola ou comunidade.</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_9" value="opt9" data-q="p5_1" data-exclusive-group="p5_1"><label for="p5_1_9">Cuidar e proteger nosso território (ex: monitorar o clima, mapear desmatamento, demarcar terras ou proteção ambiental).</label></div>
+<div class="opcao"><input type="checkbox" name="p5_1" id="p5_1_10" value="opt10" data-q="p5_1" data-exclusive="1" data-exclusive-group="p5_1"><label for="p5_1_10">Nunca usei celular, internet ou IA para nenhuma dessas coisas.</label></div>
 </div>
 </div>
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 5.1.1</div>
-  <p class="pergunta-texto">Se você já usou alguma Inteligência Artificial (como ChatGPT, aplicativos de criar imagens ou áudios) no seu dia a dia, fora das aulas: conte o que você pediu para a IA fazer e como foi o resultado.</p>
+  <p class="pergunta-texto">Você já usou Inteligência Artificial para estudar ou trabalhar (seja na escola, faculdade ou por conta própria)? Conte como foi.</p>
   <div class="pergunta-tipo">Tipo: Campo aberto de texto (Opcional)</div>
   <div class="opcoes">
-<div class="opcao"><input type="radio" name="p5_1_1" id="p5_1_1_0" value="opt0" data-q="p5_1_1"><label for="p5_1_1_0">Sim, já usei fora da escola.<input type="text" class="campo-aberto" placeholder="Espaço para contar como foi (opcional)" data-countable="0"></label></div>
-<div class="opcao"><input type="radio" name="p5_1_1" id="p5_1_1_1" value="opt1" data-q="p5_1_1"><label for="p5_1_1_1">Não, nunca usei IA fora da escola.</label></div>
+<div class="opcao"><input type="radio" name="p5_1_1" id="p5_1_1_0" value="opt0" data-q="p5_1_1"><label for="p5_1_1_0">Sim, já usei para estudar/trabalhar.<input type="text" class="campo-aberto" placeholder="Espaço para contar como foi (opcional)" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p5_1_1" id="p5_1_1_1" value="opt1" data-q="p5_1_1"><label for="p5_1_1_1">Não, nunca usei IA para estudar ou trabalhar.</label></div>
 </div>
 </div>
 <div class="pergunta ">
   <div class="pergunta-num">Pergunta 5.1.2</div>
-  <p class="pergunta-texto">E para estudar ou trabalhar (seja na escola, faculdade ou por conta própria): você já pediu ajuda para alguma Inteligência Artificial em alguma tarefa? Conte como foi.</p>
+  <p class="pergunta-texto">E se você já usou alguma Inteligência Artificial (IA) no seu dia a dia, fora da escola/trabalho: conte o que você pediu para a IA fazer e como foi o resultado.</p>
   <div class="pergunta-tipo">Tipo: Campo aberto de texto (Opcional)</div>
   <div class="opcoes">
-<div class="opcao"><input type="radio" name="p5_1_2" id="p5_1_2_0" value="opt0" data-q="p5_1_2"><label for="p5_1_2_0">Sim, já usei para estudar/trabalhar.<input type="text" class="campo-aberto" placeholder="Espaço para contar como foi (opcional)" data-countable="0"></label></div>
-<div class="opcao"><input type="radio" name="p5_1_2" id="p5_1_2_1" value="opt1" data-q="p5_1_2"><label for="p5_1_2_1">Não, nunca usei IA para estudar ou trabalhar.</label></div>
+<div class="opcao"><input type="radio" name="p5_1_2" id="p5_1_2_0" value="opt0" data-q="p5_1_2"><label for="p5_1_2_0">Sim, já usei fora da escola.<input type="text" class="campo-aberto" placeholder="Espaço para contar como foi (opcional)" data-countable="0"></label></div>
+<div class="opcao"><input type="radio" name="p5_1_2" id="p5_1_2_1" value="opt1" data-q="p5_1_2"><label for="p5_1_2_1">Não, nunca usei IA fora da escola.</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -1760,7 +1769,7 @@ Totalmente</span></label>
 <div class="opcao"><input type="radio" name="p7_9" id="p7_9_2" value="opt2" data-q="p7_9"><label for="p7_9_2">O governo, criando leis, regras e campanhas de explicação.</label></div>
 <div class="opcao"><input type="radio" name="p7_9" id="p7_9_3" value="opt3" data-q="p7_9"><label for="p7_9_3">A própria comunidade, por meio de suas lideranças, coletivos e famílias.</label></div>
 <div class="opcao"><input type="radio" name="p7_9" id="p7_9_4" value="opt4" data-q="p7_9"><label for="p7_9_4">Outro<input type="text" class="campo-aberto" placeholder="Especifique" data-countable="0"></label></div>
-<div class="opcao"><input type="radio" name="p7_9" id="p7_9_5" value="opt5" data-q="p7_9"><label for="p7_9_5">Ninguém precisa ensinar; cada pessoa aprende e descobre sozinho.</label></div>
+<div class="opcao"><input type="radio" name="p7_9" id="p7_9_5" value="opt5" data-q="p7_9"><label for="p7_9_5">Ninguém precisa ensinar; cada pessoa aprende e descobre sozinha.</label></div>
 </div>
 </div>
 <div class="pergunta ">
@@ -1770,6 +1779,7 @@ Totalmente</span></label>
   <div class="opcoes">
 <div class="opcao"><input type="radio" name="p7_10" id="p7_10_0" value="opt0" data-q="p7_10"><label for="p7_10_0">Sim</label></div>
 <div class="opcao"><input type="radio" name="p7_10" id="p7_10_1" value="opt1" data-q="p7_10"><label for="p7_10_1">Não</label></div>
+<div class="opcao"><input type="radio" name="p7_10" id="p7_10_2" value="opt2" data-q="p7_10"><label for="p7_10_2">Não me lembro</label></div>
 </div><div class="sub-bloco" data-show-if="p7_10_opt0">
 <div class="nota">Se respondeu &#x27;Sim&#x27;:</div>
 <p class="pergunta-texto">Conte para nós o que aconteceu e como você se sentiu naquele momento:</p><textarea class="campo-aberto" name="p7_10_relato" data-q="p7_10_relato" placeholder="Sua resposta (opcional)"></textarea>

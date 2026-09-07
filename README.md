@@ -475,7 +475,7 @@ Opções: *Discordo Totalmente | Discordo | Nem concordo nem discordo | Concordo
 - ( ) Não, eu não fazia ideia disso.
 
 
-### 3.6 Quando você não entende como um aplicativo de IA funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)
+### 3.6 Quando você não entende como um aplicativo funciona, você tem alguém ou algum lugar na sua comunidade para te ajudar a aprender? (Marque todas as que se aplicam)
 *Tipo: Caixa de seleção*
 - [ ] Sim, peço ajuda para amigos, parentes ou vizinhos daqui.
 - [ ] Sim, procuro lideranças da comunidade.
