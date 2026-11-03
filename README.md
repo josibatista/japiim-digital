@@ -26,14 +26,15 @@ Somente `docs/` deve ser publicado. O formulário original foi preservado, sem a
 - `docs/assets/japiim-logo.png`: logo do site institucional do Japiim.
 - `docs/materiais/`: cartilha, TCLE, TALE e autorização de imagem/áudio em PDF.
 
-A cartilha e os termos foram copiados dos materiais fornecidos. A autorização em PDF é uma conversão do documento Word fornecido, preservando texto e campos. Não armazene termos preenchidos ou mídias de participantes neste repositório público.
+Os cinco PDFs enviados pela equipe estão vinculados aos botões de leitura e download:
 
-## Pendência: PDF com dicas de mídia
+- `cartilha-japiim-digital.pdf`: cartilha do projeto.
+- `TCLE_Japiim-Digital.pdf`: consentimento.
+- `TALE_Japiim-Digital_menor-de-idade.pdf`: assentimento.
+- `guia-de-gravacao.pdf`: orientações de mídia.
+- `termo-autorizacao-de-imagem-audio.pdf`: autorização de imagem e áudio.
 
-O material de orientação de mídia não foi localizado entre os arquivos disponíveis. A página informa que será disponibilizado em breve, sem apresentar link quebrado. Para incluí-lo:
-
-1. Adicione o PDF aprovado em `docs/materiais/orientacoes-midia.pdf`.
-2. Substitua o bloco `.pending` em `docs/index.html` por links para leitura e download, seguindo o padrão dos demais PDFs.
+Não armazene termos preenchidos ou mídias de participantes neste repositório público.
 
 ## Atualizações e prévia local
 
