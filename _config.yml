@@ -1,0 +1,6 @@
+# Proteção adicional caso Pages ainda esteja configurado para main / (root).
+# A configuração recomendada é publicar somente a pasta /docs.
+exclude:
+  - rascunho-questionário.html
+  - README.md
+  - questionario.md
